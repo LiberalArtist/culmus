@@ -1,0 +1,19 @@
+Source: culmus
+Section: x11
+Priority: optional
+Maintainer: Baruch Even <baruch@debian.org>
+Build-Depends-Indep: debhelper (>= 4.1.16)
+Standards-Version: 3.6.1
+
+Package: culmus
+Architecture: all
+Depends: ${misc:Depends}
+Description: Type1 Hebrew Fonts for X11
+ Several Hebrew font families. ASCII glyphs borrowed from the URW and Bitstream
+ fonts.
+ .
+ Those families provide a basic set of a serif (Frank Ruehl), sans
+ serif (Nachlieli) and monospaced (Miriam Mono) fonts. Also included are
+ Aharoni, David, Drugulin, Ellinia and Ktav Yad.
+ .
+ Homepage: http://culmus.sourceforge.net/

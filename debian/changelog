@@ -1,0 +1,100 @@
+culmus (0.101-2) unstable; urgency=low
+
+  * The fontconfig package switched to a conf.d directory structure. Yay!
+    - Remove our hack to add our configuration to the configuration.
+    - Remove debconf question, it's meaningless now.
+    - Plug the culmus.conf in the conf.d directory,
+    - Package is installable now (Closes: #298980)
+
+ -- Baruch Even <baruch@debian.org>  Sun, 13 Mar 2005 01:47:18 +0000
+
+culmus (0.101-1) unstable; urgency=low
+
+  * New upstream version
+    - Fix a bug with the tet letter not showing up correctly sometimes.
+
+ -- Baruch Even <baruch@debian.org>  Thu, 30 Dec 2004 16:36:24 +0000
+
+culmus (0.100-5) unstable; urgency=low
+
+  * Updated Japanese translation (Closes: #281062)
+
+ -- Baruch Even <baruch@debian.org>  Sat, 13 Nov 2004 18:41:05 +0000
+
+culmus (0.100-4) unstable; urgency=low
+
+  * Improve debconf template English style (Closes: #273367)
+  * Add Japanese translation (Closes: #280000)
+
+ -- Baruch Even <baruch@debian.org>  Tue,  9 Nov 2004 21:57:20 +0000
+
+culmus (0.100-3) unstable; urgency=low
+
+  [Martin Quinson]
+  * Switch to po-debconf (Closes: #271941)
+
+  [Baruch Even]
+  * Add he.po to translate debconf message to Hebrew
+
+ -- Baruch Even <baruch@debian.org>  Sun, 19 Sep 2004 21:50:06 +0100
+
+culmus (0.100-2) unstable; urgency=low
+
+  * Add a debconf question to ask if we can modify /etc/fonts/local.conf so
+    that we can add the translation table in /etc/fonts/culmus.conf
+    automatically, default to yes since most likely our users want this.
+    (Closes: bug#269152)
+
+ -- Baruch Even <baruch@debian.org>  Tue, 31 Aug 2004 16:29:02 +0100
+
+culmus (0.100-1) unstable; urgency=low
+
+  * New upstream version
+  * Added upstream webpage to description
+  * Add watch definition file
+
+ -- Baruch Even <baruch@debian.org>  Thu, 26 Aug 2004 18:25:49 +0100
+
+culmus (0.93-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Baruch Even <baruch@debian.org>  Fri,  2 Apr 2004 00:26:03 +0200
+
+culmus (0.9.2-1) unstable; urgency=low
+
+  * New upstream version (0.90-2 renamed to 0.9.2)
+
+ -- Baruch Even <baruch@debian.org>  Wed,  3 Sep 2003 23:52:11 +0300
+
+culmus (0.9-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Baruch Even <baruch@debian.org>  Sat, 16 Aug 2003 15:14:31 +0300
+
+culmus (0.8-2) unstable; urgency=low
+
+  * Fixed description accuracy
+
+ -- Baruch Even <baruch@debian.org>  Tue, 10 Jun 2003 21:43:19 +0300
+
+culmus (0.8-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Baruch Even <baruch@debian.org>  Tue, 15 Apr 2003 10:57:08 +0300
+
+culmus (0.7.1-1) unstable; urgency=low
+
+  * New upstream version (Closes: bug#163968)
+
+ -- Baruch Even <baruch@debian.org>  Wed, 25 Dec 2002 23:17:31 +0200
+
+culmus (0.7-1) unstable; urgency=low
+
+  * Initial Release. Never released.
+  * Only support X for now.
+
+ -- Baruch Even <baruch@debian.org>  Wed,  9 Oct 2002 17:10:24 +0200
+
