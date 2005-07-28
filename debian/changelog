@@ -2,8 +2,9 @@ culmus (0.101-3) unstable; urgency=low
 
   * Change maintainer to be the Debian-Hebrew group.
   * Remove LICENSE and LICENSE-BITSTREAM files, they are redundant
+  * Update Standards-Version, no changes necessary.
 
- -- Baruch Even <baruch@debian.org>  Thu, 28 Jul 2005 10:33:38 +0100
+ -- Baruch Even <baruch@debian.org>  Thu, 28 Jul 2005 10:35:07 +0100
 
 culmus (0.101-2) unstable; urgency=low
 
