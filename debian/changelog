@@ -1,3 +1,9 @@
+culmus (0.101-3) unstable; urgency=low
+
+  * Change maintainer to be the Debian-Hebrew group.
+
+ -- Baruch Even <baruch@debian.org>  Thu, 28 Jul 2005 10:29:03 +0100
+
 culmus (0.101-2) unstable; urgency=low
 
   * The fontconfig package switched to a conf.d directory structure. Yay!
