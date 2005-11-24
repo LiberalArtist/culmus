@@ -1,3 +1,10 @@
+culmus (0.101-4) unstable; urgency=low
+
+  * Remove Ktav Yad font from the description since it's not provided by this 
+    package. See culmus-fancy package if you need it. (Closes: #335247).
+
+ -- Lior Kaplan <webmaster@guides.co.il>  Thu, 24 Nov 2005 23:49:19 +0200
+
 culmus (0.101-3) unstable; urgency=low
 
   * Change maintainer to be the Debian-Hebrew group.
