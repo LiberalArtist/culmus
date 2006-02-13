@@ -5,9 +5,6 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-# This is the debhelper compatibility version to use.
-export DH_COMPAT=3
-
 DEB_DIR=$(CURDIR)/debian/culmus
 FONTDIR=$(DEB_DIR)/usr/X11R6/lib/X11/fonts/Type1
 SCALEDIR=$(DEB_DIR)/etc/X11/fonts/Type1
