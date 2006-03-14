@@ -2,7 +2,7 @@ Source: culmus
 Section: x11
 Priority: optional
 Maintainer: Debian Hebrew Packaging Team <debian-hebrew-package@lists.alioth.debian.org>
-Uploaders: Baruch Even <baruch@debian.org>, Lior Kaplan <webmaster@guides.co.il>
+Uploaders: Baruch Even <baruch@debian.org>, Lior Kaplan <kaplan@debian.org>
 Build-Depends-Indep: debhelper (>= 4.1.16)
 Standards-Version: 3.6.2
 
