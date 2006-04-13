@@ -1,3 +1,9 @@
+culmus (0.101-5) unstable; urgency=low
+
+  * Change install directory to /usr/share/fonts/X11. (Closes: #362326)
+
+ -- Baruch Even <baruch@debian.org>  Thu, 13 Apr 2006 12:09:39 +0100
+
 culmus (0.101-4) unstable; urgency=low
 
   * Remove Ktav Yad font from the description since it's not provided by this 

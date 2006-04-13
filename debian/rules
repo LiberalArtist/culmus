@@ -6,7 +6,7 @@
 #export DH_VERBOSE=1
 
 DEB_DIR=$(CURDIR)/debian/culmus
-FONTDIR=$(DEB_DIR)/usr/X11R6/lib/X11/fonts/Type1
+FONTDIR=$(DEB_DIR)/usr/share/fonts/X11
 SCALEDIR=$(DEB_DIR)/etc/X11/fonts/Type1
 FONTCONFDIR=$(DEB_DIR)/etc/fonts
 
