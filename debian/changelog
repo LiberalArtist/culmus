@@ -1,3 +1,13 @@
+culmus (0.101-6) unstable; urgency=low
+
+  * debian/control:
+    - Upgrade standards version to 3.7.2.0 (compliance with policy section
+      11.8.5 - "Packages providing fonts")
+    - Move debhelper to Build-Depends, instead of Build-Depends-Indep
+    - Bump debhelper version to 5.0.35 due to changes in dh_installxfonts
+
+ -- Lior Kaplan <kaplan@debian.org>  Thu, 18 May 2006 17:29:31 -0500
+
 culmus (0.101-5) unstable; urgency=low
 
   * Change install directory to /usr/share/fonts/X11. (Closes: #362326)
