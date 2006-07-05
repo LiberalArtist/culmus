@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Hebrew Packaging Team <debian-hebrew-package@lists.alioth.debian.org>
 Uploaders: Baruch Even <baruch@debian.org>, Lior Kaplan <kaplan@debian.org>
 Build-Depends: debhelper (>= 5.0.35)
-Standards-Version: 3.7.2.0
+Standards-Version: 3.7.2
 
 Package: culmus
 Architecture: all
