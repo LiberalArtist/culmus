@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+	configure)
+		if [ -e /etc/fonts/conf.d/10-culmus.conf ]; then
+			echo "Upgrading from old version of culmus, switch /etc/fonts/conf.d/10-culmus.conf into a symlink to /etc/fonts/conf.avail/65-culmus.conf and change priority to 65 from 10."
+			rm /etc/fonts/conf.d/10-culmus.conf
+			ln -s ../conf.avail/65-culmus.conf /etc/fonts/conf.d/65-culmus.conf
+		fi
+	;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+	;;
+
+	*)
+	echo "postinst called with unknown argument \`$1'" >&2
+	exit 1
+	;;
+esac
+
+#DEBHELPER#
+
+exit 0

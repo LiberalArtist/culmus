@@ -1,3 +1,11 @@
+culmus (0.101-7) unstable; urgency=low
+
+  * Move /etc/fonts/conf.d/10-culmus.conf to
+    /etc/fonts/conf.avail/65-culmus.conf to better match the font policy
+    according to /etc/fonts/conf.avail/README (Closes: #426471)
+
+ -- Baruch Even <baruch@debian.org>  Sat, 02 Jun 2007 23:41:03 +0300
+
 culmus (0.101-6) unstable; urgency=low
 
   * debian/control:
