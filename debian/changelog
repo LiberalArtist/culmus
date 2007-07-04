@@ -9,7 +9,7 @@ culmus (0.101-7) unstable; urgency=low
 culmus (0.101-6) unstable; urgency=low
 
   * debian/control:
-    - Upgrade standards version to 3.7.2.0 (compliance with policy section
+    - Upgrade standards version to 3.7.2 (compliance with policy section
       11.8.5 - "Packages providing fonts")
     - Move debhelper to Build-Depends, instead of Build-Depends-Indep
     - Bump debhelper version to 5.0.35 due to changes in dh_installxfonts
