@@ -1,3 +1,4 @@
 usr/share/fonts/X11/Type1
 etc/X11/fonts/Type1
 etc/fonts/conf.avail
+etc/fonts/conf.d

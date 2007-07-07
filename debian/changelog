@@ -1,3 +1,10 @@
+culmus (0.101-8) unstable; urgency=low
+
+  * Create symlink /etc/fonts/conf.d/65-culmus.conf during build, instead of 
+    during installation on the client machine. (Closes: #431681)
+
+ -- Lior Kaplan <kaplan@debian.org>  Sat, 07 Jul 2007 18:26:52 +0300
+
 culmus (0.101-7) unstable; urgency=low
 
   * Move /etc/fonts/conf.d/10-culmus.conf to

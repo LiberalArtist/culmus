@@ -8,7 +8,7 @@
 DEB_DIR=$(CURDIR)/debian/culmus
 FONTDIR=$(DEB_DIR)/usr/share/fonts/X11/Type1
 SCALEDIR=$(DEB_DIR)/etc/X11/fonts/Type1
-FONTCONFDIR=$(DEB_DIR)/etc/fonts/conf.avail
+FONTCONFDIR=$(DEB_DIR)/etc/fonts
 
 configure: configure-stamp
 configure-stamp:
@@ -45,8 +45,8 @@ install: build
 	# Add here commands to install the package into debian/culmus.
 	install -m 644 *.afm *.pfa $(FONTDIR)/
 	install -m 644 fonts.scale $(SCALEDIR)/culmus.scale
-	install -m 644 culmus.conf $(FONTCONFDIR)/65-culmus.conf
-
+	install -m 644 culmus.conf $(FONTCONFDIR)/conf.avail/65-culmus.conf
+	ln -sf ../conf.avail/65-culmus.conf $(FONTCONFDIR)/conf.d/65-culmus.conf
 
 # Build architecture-independent files here.
 binary-indep: build install
