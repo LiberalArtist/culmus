@@ -5,6 +5,9 @@ Maintainer: Debian Hebrew Packaging Team <debian-hebrew-package@lists.alioth.deb
 Uploaders: Baruch Even <baruch@debian.org>, Lior Kaplan <kaplan@debian.org>, Shachar Shemesh <shachar@debian.org>
 Build-Depends: debhelper (>= 5.0.35)
 Standards-Version: 3.7.3
+Vcs-Svn: svn://svn.debian.org/svn/debian-hebrew/pkg/culmus
+Vcs-Browser: http://svn.debian.org/wsvn/debian-hebrew/pkg/culmus
+Homepage: http://culmus.sourceforge.net/
 
 Package: culmus
 Architecture: all
@@ -16,5 +19,3 @@ Description: Type1 Hebrew Fonts for X11
  Those families provide a basic set of a serif (Frank Ruehl), sans
  serif (Nachlieli) and monospaced (Miriam Mono) fonts. Also included are
  Aharoni, David, Drugulin, and Ellinia.
- .
- Homepage: http://culmus.sourceforge.net/

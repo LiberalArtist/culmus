@@ -1,6 +1,8 @@
 culmus (0.101-9) unstable; urgency=low
 
   * Update Standards-Version to 3.7.3, no changes needed
+  * Move Homepage from description to control header
+  * Add Vcs-* fields
 
  -- Baruch Even <baruch@debian.org>  Sat, 29 Dec 2007 14:01:19 +0200
 
