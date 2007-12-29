@@ -1,3 +1,9 @@
+culmus (0.101-9) unstable; urgency=low
+
+  * Update Standards-Version to 3.7.3, no changes needed
+
+ -- Baruch Even <baruch@debian.org>  Sat, 29 Dec 2007 14:01:19 +0200
+
 culmus (0.101-8) unstable; urgency=low
 
   * Create symlink /etc/fonts/conf.d/65-culmus.conf during build, instead of 
