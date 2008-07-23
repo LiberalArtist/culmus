@@ -1,8 +1,10 @@
 culmus (0.102-1) unstable; urgency=low
 
   * New upstream release
+  * Install truetype fonts to their proper location (truetype fonts are new in
+    this version)
 
- -- Baruch Even <baruch@debian.org>  Wed, 23 Jul 2008 22:29:01 +0300
+ -- Baruch Even <baruch@debian.org>  Wed, 23 Jul 2008 22:45:01 +0300
 
 culmus (0.101-9) unstable; urgency=low
 

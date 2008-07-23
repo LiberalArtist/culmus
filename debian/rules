@@ -6,8 +6,9 @@
 #export DH_VERBOSE=1
 
 DEB_DIR=$(CURDIR)/debian/culmus
-FONTDIR=$(DEB_DIR)/usr/share/fonts/X11/Type1
-SCALEDIR=$(DEB_DIR)/etc/X11/fonts/Type1
+FONT_T1_DIR=$(DEB_DIR)/usr/share/fonts/X11/Type1
+SCALE_T1_DIR=$(DEB_DIR)/etc/X11/fonts/Type1
+FONT_TTF_DIR=$(DEB_DIR)/usr/share/fonts/truetype/culmus
 FONTCONFDIR=$(DEB_DIR)/etc/fonts
 
 configure: configure-stamp
@@ -31,7 +32,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
-	
+
 	# Add here commands to clean up after the build process.
 
 	dh_clean
@@ -43,8 +44,9 @@ install: build
 	dh_installdirs
 
 	# Add here commands to install the package into debian/culmus.
-	install -m 644 *.afm *.pfa $(FONTDIR)/
-	install -m 644 fonts.scale $(SCALEDIR)/culmus.scale
+	install -m 644 *.afm *.pfa $(FONT_T1_DIR)/
+	install -m 644 fonts.scale-type1 $(SCALE_T1_DIR)/culmus.scale
+	install -m 644 *.ttf $(FONT_TTF_DIR)/
 	install -m 644 culmus.conf $(FONTCONFDIR)/conf.avail/65-culmus.conf
 	ln -sf ../conf.avail/65-culmus.conf $(FONTCONFDIR)/conf.d/65-culmus.conf
 
