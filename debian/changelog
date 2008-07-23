@@ -1,8 +1,8 @@
-culmus (0.101-10) UNRELEASED; urgency=low
+culmus (0.102-1) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * New upstream release
 
- -- Baruch Even <baruch@debian.org>  Sat, 29 Dec 2007 14:17:53 +0200
+ -- Baruch Even <baruch@debian.org>  Wed, 23 Jul 2008 22:29:01 +0300
 
 culmus (0.101-9) unstable; urgency=low
 
