@@ -1,4 +1,4 @@
-culmus (0.102-1) unstable; urgency=low
+culmus (0.104-1) unstable; urgency=low
 
   [ Baruch Even ]
   * New upstream release
@@ -7,6 +7,7 @@ culmus (0.102-1) unstable; urgency=low
 
   [ Tzafrir Cohen ]
   * Add myself as uploader.
+  * New upstream release (Closes: #544803).
   * Upgrade standards version to 3.8.4. No change needed.
   * Removing original files from svn repo (they are in the tarball).
   * Switch to dpkg v.3 format.
