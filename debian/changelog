@@ -9,8 +9,9 @@ culmus (0.102-1) unstable; urgency=low
   * Add myself as uploader.
   * Upgrade standards version to 3.8.4. No change needed.
   * Removing original files from svn repo (they are in the tarball).
+  * Switch to dpkg v.3 format.
 
- -- Tzafrir Cohen <tzafrir@debian.org>  Sat, 15 May 2010 23:41:54 +0300
+ -- Tzafrir Cohen <tzafrir@debian.org>  Sun, 16 May 2010 00:03:15 +0300
 
 culmus (0.101-9) unstable; urgency=low
 
