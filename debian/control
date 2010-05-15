@@ -2,7 +2,7 @@ Source: culmus
 Section: x11
 Priority: optional
 Maintainer: Debian Hebrew Packaging Team <debian-hebrew-package@lists.alioth.debian.org>
-Uploaders: Baruch Even <baruch@debian.org>, Lior Kaplan <kaplan@debian.org>, Shachar Shemesh <shachar@debian.org>
+Uploaders: Baruch Even <baruch@debian.org>, Lior Kaplan <kaplan@debian.org>, Shachar Shemesh <shachar@debian.org>, Tzafrir Cohen <tzafrir@debian.org>
 Build-Depends: debhelper (>= 5.0.35)
 Standards-Version: 3.7.3
 Vcs-Svn: svn://svn.debian.org/svn/debian-hebrew/pkg/culmus
