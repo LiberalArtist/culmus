@@ -7,8 +7,9 @@ culmus (0.102-1) unstable; urgency=low
 
   [ Tzafrir Cohen ]
   * Add myself as uploader.
+  * Upgrade standards version to 3.8.4. No change needed.
 
- -- Tzafrir Cohen <tzafrir@debian.org>  Sat, 15 May 2010 22:38:05 +0300
+ -- Tzafrir Cohen <tzafrir@debian.org>  Sat, 15 May 2010 22:44:53 +0300
 
 culmus (0.101-9) unstable; urgency=low
 
