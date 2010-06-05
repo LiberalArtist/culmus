@@ -1,13 +1,12 @@
 culmus (0.104-1) unstable; urgency=low
 
   [ Baruch Even ]
-  * New upstream release
-  * Install truetype fonts to their proper location (truetype fonts are new in
-    this version)
+  * New upstream release (Closes: #544803).
+    - Provides TrueType versions for David and Miriam fonts (Closes: #421416).
+  * Install truetype fonts to their proper location.
 
   [ Tzafrir Cohen ]
   * Add myself as uploader.
-  * New upstream release (Closes: #544803).
   * Upgrade standards version to 3.8.4. No change needed.
   * Switch to dpkg-source 3.0 (quilt) format.
 
