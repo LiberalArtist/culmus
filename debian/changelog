@@ -2,7 +2,7 @@ culmus (0.104-1) unstable; urgency=low
 
   [ Baruch Even ]
   * New upstream release (Closes: #544803).
-    - Provides David and Miriam fonts as TrueType instead of Type 1 (Closes: #421416).
+    - Provides David and Miriam as TrueType instead of Type 1 (Closes: #421416).
     - Provides OpenType support for David and Miriam fonts (Closes: #463714).
   * Install truetype fonts to their proper location.
 
