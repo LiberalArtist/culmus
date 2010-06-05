@@ -11,7 +11,7 @@ culmus (0.104-1) unstable; urgency=low
   * Switch to dpkg-source 3.0 (quilt) format.
 
   [ Lior Kaplan ]
-  * Update section in debian/control acording to overrides (x11 to fonts).
+  * Update section in debian/control according to overrides (x11 to fonts).
 
  -- Lior Kaplan <kaplan@debian.org>  Sat, 05 Jun 2010 22:40:38 +0300
 
