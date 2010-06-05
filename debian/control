@@ -12,10 +12,12 @@ Homepage: http://culmus.sourceforge.net/
 Package: culmus
 Architecture: all
 Depends: ${misc:Depends}
-Description: Type1 Hebrew Fonts for X11
- Several Hebrew font families. ASCII glyphs borrowed from the URW and Bitstream
+Description: TrueType and Type1 Hebrew Fonts for X11
+ 9 Hebrew font families. ASCII glyphs borrowed from the URW and Bitstream
  fonts.
  .
- Those families provide a basic set of a serif (Frank Ruehl), sans
- serif (Nachlieli) and monospaced (Miriam Mono) fonts. Also included are
- Aharoni, David, Drugulin, and Ellinia.
+ Those families provide a basic set of a serif (Frank Ruehl), sans serif 
+ (Nachlieli) and monospaced (Miriam Mono) fonts. Also included Miriam, Drugulin,
+ Aharoni, David, Yehuda and Ellinia.
+ .
+ The Miriam and David fonts have OpenType diacritics support.
