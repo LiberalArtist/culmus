@@ -9,9 +9,12 @@ culmus (0.104-1) unstable; urgency=low
   * Add myself as uploader.
   * New upstream release (Closes: #544803).
   * Upgrade standards version to 3.8.4. No change needed.
-  * Switch to dpkg-source 3.0 (quilt) format
+  * Switch to dpkg-source 3.0 (quilt) format.
 
- -- Tzafrir Cohen <tzafrir@debian.org>  Sun, 16 May 2010 00:03:15 +0300
+  [ Lior Kaplan ]
+  * Update section in debian/control acording to overrides (x11 to fonts).
+
+ -- Lior Kaplan <kaplan@debian.org>  Sat, 05 Jun 2010 22:40:38 +0300
 
 culmus (0.101-9) unstable; urgency=low
 

@@ -1,5 +1,5 @@
 Source: culmus
-Section: x11
+Section: fonts
 Priority: optional
 Maintainer: Debian Hebrew Packaging Team <debian-hebrew-package@lists.alioth.debian.org>
 Uploaders: Baruch Even <baruch@debian.org>, Lior Kaplan <kaplan@debian.org>, Shachar Shemesh <shachar@debian.org>, Tzafrir Cohen <tzafrir@debian.org>
