@@ -1,3 +1,10 @@
+culmus (0.105-1) unstable; urgency=low
+
+  * New upstream release
+    - Miriam Mono font family is enhanced and re-released in TrueType format.
+
+ -- Lior Kaplan <kaplan@debian.org>  Tue, 24 Aug 2010 19:43:14 +0300
+
 culmus (0.104-1) unstable; urgency=low
 
   [ Baruch Even ]
