@@ -1,3 +1,11 @@
+culmus (0.110-1) unstable; urgency=low
+
+  * New upstream release
+    - Two new font families: Hadasim CLM and Simple CLM.
+    - Two new fonts: Stam Ashkenaz CLM and Stam Sefarad CLM.
+
+ -- Lior Kaplan <kaplan@debian.org>  Tue, 19 Oct 2010 16:15:27 +0200
+
 culmus (0.105-1) unstable; urgency=low
 
   * New upstream release

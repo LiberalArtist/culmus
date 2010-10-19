@@ -3,39 +3,77 @@ Wed,  9 Oct 2002 17:10:24 +0200.
 
 It was downloaded from http://culmus.sourceforge.net/
 
-Upstream Author: Maxim Iorsh <iorsh@users.sourceforge.net>
+Upstream Authors: 
+   Maxim Iorsh <iorsh@users.sourceforge.net>
+   Yoram Gnat (yoram.gnat@gmail.com>
 
 Copyright:
 
-Digital version of Aharoni font family (Hebrew glyphs and part of
-punctuation) is copyright 2002 by Maxim Iorsh (iorsh@math.technion.ac.il).  
-Latin glyphs, digits and part of punctuation contained in the Aharoni font
-family are part of URW Gothic L font family and are copyright (URW)++,
-copyright 1999 by (URW)++ Design & Development. All rights reserved.
+Hadasim font family is copyright 2010 by Yoram Gnat (yoram.gnat@gmail.com).
+Latin and parts of general punctuation marks based on modified forms from
+the LiberationSerif font, created by Digitized data 2007 Ascender
+Corporation. All rights reserved. 
+
+Simple font family is copyright 2007-2010 by Yoram Gnat
+(yoram-gnat@homeil.com). Latin glyphs, digits and punctuation copyright 1999
+by (URW)++ Design & Development. All rights reserved. 
+Hebrew vowel marks positioning algorithms Copyright 2010 by Yoram Gnat 2010.
+(yoram.gnat@gmail.com. 
+
+Stam Ashkenaz font is copyright 2007-2010 by Yoram Gnat (yoram.gnat@gmail.com).
+
+Stam Sefarad font is copyright 2008-2010 by Yoram Gnat (yoram.gnat@gmail.com).
+
+Miriam font family is copyright 2004-2010 by Maxim Iorsh
+(iorsh@users.sourceforge.net). All rights reserved.
+
+Yehuda font family is copyright 2004 by Maxim Iorsh
+(iorsh@math.technion.ac.il). All rights reserved.
+
+Drugulin font family (Hebrew glyphs) is copyright 2003,2004 by Maxim Iorsh
+(iorsh@math.technion.ac.il).  Latin glyphs, digits and punctuation
+contained in the Drugulin font family are part of Nimbus Roman No9 L font
+family and are copyright 1999 by (URW)++ Design & Development. 
+All rights reserved.
+
+Ellinia font family is copyright 2003,2004 by Maxim Iorsh
+(iorsh@math.technion.ac.il). All rights reserved.
+
+Caladings collection is copyright 2003,2004 by Maxim Iorsh
+(iorsh@math.technion.ac.il). All rights reserved.
+
+Digital version of Aharoni font family (Hebrew glyphs, numerals and part
+of punctuation) is copyright 2002-2004 by Maxim Iorsh
+(iorsh@math.technion.ac.il).  Latin glyphs, digits and part of punctuation
+contained in the Aharoni font family are part of URW Gothic L font family
+and are copyright 1999 by (URW)++ Design & Development.
+All rights reserved.
 
 Digital version of David font family (Hebrew glyphs, numerals and part of
-punctuation) is copyright 2002 by Maxim Iorsh (iorsh@math.technion.ac.il).
-Latin glyphs and part of punctuation contained in the David font family
-are part of Bitstream Charter font family and are copyright 1990 as an
-unpublished work by Bitstream Inc. All rights reserved.
+punctuation) is copyright 2002-2010 by Maxim Iorsh
+(iorsh@users.sourceforge.net). Latin glyphs and part of punctuation
+contained in the David font family are part of Bitstream Charter font
+family and are copyright 1990 as an unpublished work by Bitstream Inc. All
+rights reserved. See also file LICENSE-BITSTREAM.
 
-Digital version of Frank-Ruehl font family (Hebrew glyphs) is copyright
-2002 by Maxim Iorsh (iorsh@math.technion.ac.il).  Latin glyphs, digits and
-punctuation contained in the Frank-Ruehl font family are part of Century
-Schoolbook L font family and are copyright (URW)++, copyright 1999 by
-(URW)++ Design & Development. All rights reserved.
+Frank-Ruehl font family (Hebrew glyphs) is copyright 2002-2004 by Maxim
+Iorsh (iorsh@math.technion.ac.il).  Latin glyphs, digits and punctuation
+contained in the Frank-Ruehl font family are part of Century Schoolbook L
+font family and are copyright 1999 by (URW)++ Design & Development. All 
+rights reserved.
 
-Nachlieli font family (Hebrew glyphs) is copyright 2002 by Maxim Iorsh
-(iorsh@math.technion.ac.il).  Latin glyphs, digits and punctuation
+Nachlieli font family (Hebrew glyphs) is copyright 2002-2004 by Maxim
+Iorsh (iorsh@math.technion.ac.il).  Latin glyphs, digits and punctuation
 contained in the Nachlieli font family are part of Nimbus Sans L font
-family and are copyright (URW)++, copyright 1999 by (URW)++ Design &
-Development. All rights reserved.
+family and are copyright 1999 by (URW)++ Design & Development. All 
+rights reserved.
 
-Hasida font family (Hebrew glyphs) is copyright 2002 by Maxim Iorsh
-(iorsh@math.technion.ac.il).  Latin glyphs, digits and punctuation
-contained in the Nachlieli font family are part of Nimbus Mono L font
-family and are copyright (URW)++, copyright 1999 by (URW)++ Design &
-Development. All rights reserved.
+Miriam Mono font family (Hebrew glyphs) is copyright 2002-2004 by Maxim
+Iorsh (iorsh@math.technion.ac.il). Hebrew vowel marks positioning algorithms
+implementation by Yoram Gnat (yoramg@shenkar.ac.il), 2010. 
+Latin glyphs, digits and punctuation contained in the Miriam Mono font
+family are part of Nimbus Mono L font family and are copyright 1999 by
+(URW)++ Design & Development. All rights reserved.
 
 This package is distributed under the terms of GNU General Public License
 version 2.
