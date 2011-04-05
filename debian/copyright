@@ -39,7 +39,7 @@ All rights reserved.
 Ellinia font family is copyright 2003,2004 by Maxim Iorsh
 (iorsh@math.technion.ac.il). All rights reserved.
 
-Caladings collection is copyright 2003,2004 by Maxim Iorsh
+Caladings collection is copyright 2003-2010 by Maxim Iorsh
 (iorsh@math.technion.ac.il). All rights reserved.
 
 Digital version of Aharoni font family (Hebrew glyphs, numerals and part
@@ -68,12 +68,18 @@ contained in the Nachlieli font family are part of Nimbus Sans L font
 family and are copyright 1999 by (URW)++ Design & Development. All 
 rights reserved.
 
-Miriam Mono font family (Hebrew glyphs) is copyright 2002-2004 by Maxim
+Miriam Mono font family (Hebrew glyphs) is copyright 2002-2010 by Maxim
 Iorsh (iorsh@math.technion.ac.il). Hebrew vowel marks positioning algorithms
 implementation by Yoram Gnat (yoramg@shenkar.ac.il), 2010. 
 Latin glyphs, digits and punctuation contained in the Miriam Mono font
 family are part of Nimbus Mono L font family and are copyright 1999 by
 (URW)++ Design & Development. All rights reserved.
+
+Keter YG font family is Copyright 2009 by Yoram Gnat (yoram.gnat@gmail.com)
+Hebrew OpenType Layout logic copyright (c) 2003 & 2007, Ralph Hancock &
+John Hudson. This layout logic for Biblical Hebrew is open source software
+under the MIT License; for details  contact copyright holders
+at <license@tiro.com>.
 
 This package is distributed under the terms of GNU General Public License
 version 2.
