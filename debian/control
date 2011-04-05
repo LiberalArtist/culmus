@@ -16,5 +16,6 @@ Description: TrueType and Type1 Hebrew Fonts for X11
  14 Hebrew font families. Contain ASCII glyphs from various sources.
  .
  Those families provide a basic set of a serif (Frank Ruehl), sans serif 
- (Nachlieli) and monospaced (Miriam Mono) fonts. Also included Miriam, Drugulin,
- Aharoni, David, Hadasim etc. Cantillation marks support is available in Keter YG.
+ (Nachlieli) and monospaced (Miriam Mono) fonts. Also included Miriam, 
+ Drugulin, Aharoni, David, Hadasim etc. Cantillation marks support is 
+ available in Keter YG.
