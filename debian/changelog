@@ -1,3 +1,10 @@
+culmus (0.121-1) unstable; urgency=low
+
+  * New upstream release
+    - Frank Ruehl CLM now supports diacritics.
+
+ -- Lior Kaplan <kaplan@debian.org>  Tue, 31 Jan 2012 23:50:45 +0200
+
 culmus (0.120-1) unstable; urgency=low
 
   * New upstream release
