@@ -1,3 +1,10 @@
+culmus (0.121-2) unstable; urgency=low
+
+  * Split multiple test field values in culmus.conf (LP: #1034928)
+    - Relevant for fontconfig >= 2.9.91 (see fdo#33644)
+
+ -- Lior Kaplan <kaplan@debian.org>  Sun, 04 Nov 2012 23:33:21 +0200
+
 culmus (0.121-1) unstable; urgency=low
 
   * New upstream release
