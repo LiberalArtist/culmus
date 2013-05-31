@@ -1,3 +1,10 @@
+culmus (0.130-1) unstable; urgency=low
+
+  * New upstream release
+    - Added TrueType font "Shofar".
+
+ -- Lior Kaplan <kaplan@debian.org>  Sat, 01 Jun 2013 00:28:58 +0300
+
 culmus (0.121-2) unstable; urgency=low
 
   * Split multiple test field values in culmus.conf (LP: #1034928)
