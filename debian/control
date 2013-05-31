@@ -5,8 +5,8 @@ Maintainer: Debian Hebrew Packaging Team <debian-hebrew-package@lists.alioth.deb
 Uploaders: Baruch Even <baruch@debian.org>, Lior Kaplan <kaplan@debian.org>, Shachar Shemesh <shachar@debian.org>, Tzafrir Cohen <tzafrir@debian.org>
 Build-Depends: debhelper (>= 5.0.35)
 Standards-Version: 3.9.3
-Vcs-Svn: svn://svn.debian.org/svn/debian-hebrew/pkg/culmus
-Vcs-Browser: http://svn.debian.org/wsvn/debian-hebrew/pkg/culmus
+Vcs-Svn: svn://anonscm.debian.org/debian-hebrew/pkg/culmus
+Vcs-Browser: http://anonscm.debian.org/viewvc/debian-hebrew/pkg/culmus/
 Homepage: http://culmus.sourceforge.net/
 
 Package: culmus
