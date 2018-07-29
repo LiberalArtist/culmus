@@ -1,3 +1,12 @@
+culmus (0.132-1) unstable; urgency=medium
+
+  * New upstream release
+    - David CLM now also supports meteg and rafe, in addition to other
+      diacritics.
+  * Update maintainer address (Closes: #899476)
+
+ -- Lior Kaplan <kaplan@debian.org>  Sun, 29 Jul 2018 17:39:59 +0300
+
 culmus (0.131-1) unstable; urgency=medium
 
   [ Tzafrir Cohen ]
