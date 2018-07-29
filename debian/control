@@ -1,7 +1,7 @@
 Source: culmus
 Section: fonts
 Priority: optional
-Maintainer: Debian Hebrew Packaging Team <debian-hebrew-package@lists.alioth.debian.org>
+Maintainer: Debian Hebrew Packaging Team <team+hebrew@tracker.debian.org>
 Uploaders: Lior Kaplan <kaplan@debian.org>, Tzafrir Cohen <tzafrir@debian.org>
 Build-Depends: debhelper (>= 5.0.35)
 Standards-Version: 3.9.4
