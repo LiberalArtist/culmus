@@ -1,6 +1,6 @@
 Summary:	Free Hebrew scalable fonts
 Name:		culmus-fonts
-Version:	0.131
+Version:	0.132
 Release:	1
 Vendor:		Culmus Project
 
@@ -38,7 +38,7 @@ BuildArch:	noarch
 # Prereq:		chkfontpath
 
 %description
-Nachlieli CLM completely redesigned, and now it also supports diacritics.
+David CLM now also supports meteg and rafe, in addition to other diacritics.
 
 15 Hebrew font families. Contain ASCII glyphs from various sources.
 Those families provide a basic set of a serif (Frank Ruehl), sans serif
