@@ -1,0 +1,29 @@
+# Canonic composition:
+#   Aleph-Lamed ligature in Judesmo/Ladino language only
+
+lookup ccmpAlephLamed {
+  lookupflag RightToLeft;
+    sub \afii57664 \afii57676  by \uniFB4F;
+} ccmpAlephLamed;
+
+feature ccmp {
+  script hebr;
+    language JUD  exclude_dflt;
+      lookup ccmpAlephLamed;
+} ccmp;
+
+# Discretionary ligature:
+#   Aleph-Lamed ligature as a user-defined stylistic peculiarity
+
+lookup dligAlephLamed {
+  lookupflag RightToLeft;
+    sub \afii57664 \afii57676  by \uniFB4F;
+} dligAlephLamed;
+
+feature dlig {
+  script hebr;
+    language dflt ;
+      lookup dligAlephLamed;
+} dlig;
+
+
