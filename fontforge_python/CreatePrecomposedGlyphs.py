@@ -1,8 +1,9 @@
 import fontforge
 import psMat
+import os.path
 import sys
 
-sys.path.append("/home/iorsh/.FontForge/python")
+sys.path.append(os.path.expanduser("~") + "/.FontForge/python")
 import InitHebrewGlyphData
 import utils
 

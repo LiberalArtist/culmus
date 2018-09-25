@@ -2,7 +2,7 @@ import fontforge
 import os.path
 import sys
 
-sys.path.append("/home/iorsh/.FontForge/python")
+sys.path.append(os.path.expanduser("~") + "/.FontForge/python")
 import GuessMarkToMarkGaps
 import InitHebrewGlyphData
 import utils
@@ -82,10 +82,11 @@ def AddHolamRafeGPOS(font):
     rafe  = font["afii57841"]
     holam_width = - holam.left_side_bearing - holam.right_side_bearing
     rafe_width = - rafe.left_side_bearing - rafe.right_side_bearing
-    gap   = utils.GetMarkToMarkGap(font, "afii57793", "afii57798") # hiriq-patah
+    gap   = utils.GetMarkToMarkGap(font, "patah.narrow", "tsere.narrow")
     center_to_center = gap + (holam_width + rafe_width) / 2
 
-    rafe.addAnchorPoint("CtxAnchors_Rafe", "mark", 0, 0)
+    for mark in InitHebrewGlyphData.GetVowelEquiv()["RafeToBase"]:
+        font[mark].addAnchorPoint("CtxAnchors_Rafe", "mark", 0, 0)
 
     for glyph_class in InitHebrewGlyphData.GetGlyphEquiv():
 
@@ -123,7 +124,8 @@ def AddShinDotRafeGPOS(font):
     gap   = utils.GetMarkToMarkGap(font, "afii57793", "afii57798") # hiriq-patah
     center_to_center = gap + (sdot_width + rafe_width) / 2
 
-    rafe.addAnchorPoint("CtxAnchors_Rafe", "mark", 0, 0)
+    for mark in InitHebrewGlyphData.GetVowelEquiv()["RafeToBase"]:
+        font[mark].addAnchorPoint("CtxAnchors_Rafe", "mark", 0, 0)
 
     shindot_pos = (shdot.left_side_bearing - shdot.right_side_bearing) / 2
     sindot_pos = (sdot.left_side_bearing - sdot.right_side_bearing) / 2
