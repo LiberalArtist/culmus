@@ -38,7 +38,7 @@ def AddHebrewGSUB(unused, font):
     font.mergeFeature(script_dir + "/SinShin.fea")
     font.mergeFeature(script_dir + "/WideLetters.fea")
     font.mergeFeature(script_dir + "/Yiddish.fea")
-    font.mergeFeature(script_dir + "/AlephLamed.fea")
+    font.mergeFeature(script_dir + "/Ladino.fea")
     font.mergeFeature(script_dir + "/MiscSALT.fea")
     font.mergeFeature(script_dir + "/NarrowVowels.fea")
 
