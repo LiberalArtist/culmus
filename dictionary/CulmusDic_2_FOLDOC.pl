@@ -4,6 +4,8 @@
 # It is a PUBLIC DOMAIN - you may do with it anything you wish.
 
 # 22-Aug-08 | iorsh@users.sourceforge.net | Created
+# 04-Sep-08 | iorsh@users.sourceforge.net | Optional $definiton field,
+#           |                             | simple progress indicator
 
 use strict;
 use integer;
@@ -24,6 +26,7 @@ die "Can't find file \"$file\""
 
 my $parser = XML::LibXML->new();
 my $doc = $parser->parse_file($file);
+my $counter = 0;
 my $total = 0;
 
 my $xml_out = XML::LibXML::Document->new();
@@ -76,11 +79,13 @@ foreach my $key (keys %dictionary)
       for (my $i = 1; $i <= $#entry; $i++)
       {
          print " " . $entry[$i][0] . "\n";
-         print "\t" . $entry[$i][1] . "\n";
+         print "\t" . $entry[$i][1] . "\n" if $entry[$i][1];
          print "\t" . $entry[$i][2] . "\n";
       }
    }
 }
+
+print STDERR "\n";
 
 sub AddReferenceFromKey
 {
@@ -125,8 +130,13 @@ sub AddMeaningFromVariant
    }
 
    my $word = $word_node->textContent;
-   my $definition = $variant->getElementsByTagName('definiton')->item(0)
+   my $definition;
+
+   if ($variant->getElementsByTagName('definiton')->item(0))
+   {
+      $definition = $variant->getElementsByTagName('definiton')->item(0)
                             ->getFirstChild->textContent;
+   }
 
    my $translation = $variant->getElementsByTagName('translation')->item(0);
 
@@ -138,6 +148,10 @@ sub AddMeaningFromVariant
 
    my @meaning = ($word, $definition, $en_trans);
    push @$entry, [@meaning];
+
+   # This part is awfully slow. Give user some visual feedback.
+   $counter++;
+   print STDERR "." if !($counter%100);
 
    return 1;
 }

@@ -1,7 +1,17 @@
-This package is licensed under the GNU Free Documentation License. It uses material from the Hebrew Wiktionary.
+This package is a collection of several dictionary sources, each with different license. Please see details below.
 
-Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.
+-----------------------------------------------
+This package uses material from the Hebrew Wiktionary.
 
-The files build.sh, install.sh, CulmusDic_2_FOLDOC.pl, HeWiktionary_2_CulmusDic.pl are in the public domain.
+The file hewiktionary-20080616-pages-articles.xml is distributed under the terms
+ of GFDL version 1.2 or later.
 
-The file hewiktionary-20080616-pages-articles.xml is distributed under the terms of GFDL version 1.2 or later.
+Permission is granted to copy, distribute and/or modify the file hewiktionary-20080616-pages-articles.xml under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.
+
+-----------------------------------------------
+This package uses material from Mila - Knowledge Center for Processing Hebrew.
+
+The files hebrew_synonyms.xml, hebrew_synsets.xml are distributed under the terms of the GNU General Public License.
+
+-----------------------------------------------
+The files build.sh, install.sh, CulmusDic_2_FOLDOC.pl, HeWiktionary_2_CulmusDic.pl, HebrewWordNet_2_CulmusDic.pl were created by Maxim Iorsh. These files are in the public domain.

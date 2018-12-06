@@ -3,8 +3,10 @@
 # It is a PUBLIC DOMAIN - you may do with it anything you wish.
 
 # 22-Aug-08 | iorsh@users.sourceforge.net | Created
+# 17-Sep-08 | iorsh@users.sourceforge.net | Added Hebrew WordNet
 
 cp wiktionary-he-eng.* /usr/share/dictd/
+cp wordnet-he-eng.* /usr/share/dictd/
 dictdconfig -w
 
 echo 'Restarting dictd service...'
