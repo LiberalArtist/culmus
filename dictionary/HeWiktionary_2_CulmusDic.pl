@@ -4,6 +4,7 @@
 # It is a PUBLIC DOMAIN - you may do with it anything you wish.
 
 # 22-Aug-08 | iorsh@users.sourceforge.net | Created
+# 27-Apr-08 | iorsh@users.sourceforge.net | Fixed for empty entries
 
 use strict;
 use integer;
@@ -32,7 +33,7 @@ $xml_out->setDocumentElement($root_out);
 
 foreach my $page ($doc->getElementsByTagName('page'))
 {
-   my ($title, $title_re, $rev, $text, $key, $meaning, $trans, $expl, $redir, $var);
+   my ($title, $title_re, $rev, $block, $text, $key, $meaning, $trans, $expl, $redir, $var);
 
    $title = $page->getElementsByTagName('title')->item(0)
             ->getFirstChild->textContent;
@@ -58,8 +59,12 @@ foreach my $page ($doc->getElementsByTagName('page'))
    }
 
    $rev = $page->getElementsByTagName('revision')->item(0);
-   $text = $rev->getElementsByTagName('text')->item(0)
-            ->getFirstChild->textContent;
+   $block = $rev->getElementsByTagName('text')->item(0)->getFirstChild;
+
+   # Skip empty entries
+   next if (!$block);
+
+   $text = $block->textContent;
 
    my $key_out = $xml_out->createElement('key');
    my $keyword_out = $xml_out->createElement('keyword');

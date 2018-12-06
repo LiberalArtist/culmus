@@ -4,6 +4,7 @@
 # It is a PUBLIC DOMAIN - you may do with it anything you wish.
 
 # 22-Aug-08 | iorsh@users.sourceforge.net | Created
+# 27-Apr-09 | iorsh@users.sourceforge.net | Fixed for combined characters
 
 use strict;
 use integer;
@@ -115,8 +116,15 @@ foreach my $entry (keys %reverse_lookup)
    # Remove nikud.
    for (my $i = 0; $i < @{$keys}; $i++)
    {
+      # Remove nikud.
       $keys->[$i] =~ s/[\x{05b0}-\x{05cf}]//g;
+
+      # Strip nikud from combined characters
+      $keys->[$i] =~ tr/\x{fb30}-\x{fb4a}\x{fb2a}\x{fb2b}\x{fb2c}\x{fb2d}\x{fb2e}\x{fb2f}\x{fb4b}/\x{05d0}-\x{05ea}\x{05e9}\x{05e9}\x{05e9}\x{05e9}\x{05d0}\x{05d0}\x{05d5}/;
    }
+
+   # Strip nikud from combined characters
+   
 
    # Remove duplicate keys
    my %keyhash = map { $_, 1 } @{$keys};
