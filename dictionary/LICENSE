@@ -14,4 +14,9 @@ This package uses material from Mila - Knowledge Center for Processing Hebrew.
 The files hebrew_synonyms.xml, hebrew_synsets.xml are distributed under the terms of the GNU General Public License.
 
 -----------------------------------------------
-The files build.sh, install.sh, CulmusDic_2_FOLDOC.pl, HeWiktionary_2_CulmusDic.pl, HebrewWordNet_2_CulmusDic.pl were created by Maxim Iorsh. These files are in the public domain.
+This package uses material from Abraham Waldstein's Hebrew-English dictionary.
+
+The files waldstein/*.txt are in the public domain.
+
+-----------------------------------------------
+The files build.sh, install.sh, CulmusDic_2_FOLDOC.pl, HeWiktionary_2_CulmusDic.pl, HebrewWordNet_2_CulmusDic.pl, WaldsteinHeEn_2_CulmusDic.pl were created by Maxim Iorsh. These files are in the public domain.

@@ -1,0 +1,8 @@
+Copyright
+
+ This document is in the public domain.
+
+Source
+
+ Abraham Waldstein's dictionary scans, http://culmus.sourceforge.net/dictionary
+

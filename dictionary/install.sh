@@ -4,9 +4,11 @@
 
 # 22-Aug-08 | iorsh@users.sourceforge.net | Created
 # 17-Sep-08 | iorsh@users.sourceforge.net | Added Hebrew WordNet
+# 28-Nov-08 | iorsh@users.sourceforge.net | Added Waldstein's dictionary
 
 cp wiktionary-he-eng.* /usr/share/dictd/
 cp wordnet-he-eng.* /usr/share/dictd/
+cp waldstein-he-eng.* /usr/share/dictd/
 dictdconfig -w
 
 echo 'Restarting dictd service...'
