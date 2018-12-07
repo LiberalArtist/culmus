@@ -7,6 +7,7 @@
 # 27-Apr-08 | iorsh@users.sourceforge.net | Fixed for empty entries
 # 29-Jan-11 | iorsh@users.sourceforge.net | Fixed extraction of description,
 #           |                             | more lexical data extracted.
+# 12-Feb-11 | iorsh@users.sourceforge.net | Recognize shortcuts for gender and category.
 
 use strict;
 use integer;
@@ -20,6 +21,7 @@ sub AddDeclensionsToXml;
 sub GetDescription;
 sub GetNituah;
 sub GetDeclensions;
+sub GetStress;
 
 sub WikiPrint;
 
@@ -141,6 +143,7 @@ foreach my $page ($doc->getElementsByTagName('page'))
 
       $var_out->setAttribute("category", $nituah_hash_ref->{"category"}) if $nituah_hash_ref->{"category"};
       $var_out->setAttribute("gender", $nituah_hash_ref->{"gender"}) if $nituah_hash_ref->{"gender"};
+      $var_out->setAttribute("stress", $nituah_hash_ref->{"stress"}) if $nituah_hash_ref->{"stress"};
       $var_out->appendTextChild("word", $meaning) if $meaning;
       $var_out->appendTextChild("definiton", $expl) if $expl;
       $var_out->appendTextChild("nituah", $nituah_hash_ref->{"nituah"}) if $nituah_hash_ref->{"nituah"};
@@ -160,7 +163,7 @@ foreach my $page ($doc->getElementsByTagName('page'))
 
 print STDERR $total . "\n";
 
-print $xml_out->toString;
+print $xml_out->toString(2);
 
 sub WikiPrint
 {
@@ -214,28 +217,40 @@ sub GetCategory
 {
    my ($nituah) = @_;
 
-   return if ($nituah !~ /\|\s*חלק\sדיבר=(.*?)\|/s);
+   return if ($nituah !~ /\|\s*חלק\sדיבר=(.*?)\s*\|/s);
 
    my $category = $1;
 
    return "noun"        if ($category =~ /שם[־-\s]עצם/);
+   return "noun"        if ($category eq "ע");
    return "verbal noun" if ($category =~ /שם[־-\s]פעולה/);
    return "adjective"   if ($category =~ /שם[־-\s]תואר/);
+   return "adjective"   if ($category eq "ת");
+   return "adverb"      if ($category =~ /תואר[־-\s]הפועל/);
+   return "adverb"      if ($category eq "הת");
+   return "adverb"      if ($category eq "ה.ת");
    return "adposition"  if ($category =~ /מילת[־-\s]יחס/);
+   return "conjunction" if ($category =~ /מילת[־-\s]חיבור/);
+   return "conjunction" if ($category eq "ח");
    return "compound"    if ($category =~ /צרף/);
+   return "compound"    if ($category eq "צ");
 }
 
 sub GetGender
 {
    my ($nituah) = @_;
 
-   return if ($nituah !~ /\|\s*מין=(.*?)\|/s);
+   return if ($nituah !~ /\|\s*מין=(.*?)\s*\|/s);
 
    my $gender = $1;
 
    return "both"      if ($gender =~ /זכר/ && $gender =~ /נקבה/);
+   return "both"      if ($gender eq "זונ");
+   return "both"      if ($gender eq "זו\"נ");
    return "masculine" if ($gender =~ /זכר/);
+   return "masculine" if ($gender eq "ז");
    return "feminine"  if ($gender =~ /נקבה/);
+   return "feminine"  if ($gender eq "נ");
 }
 
 sub GetDeclensions
@@ -253,6 +268,14 @@ sub GetDeclensions
       if (/ס"ר\s*(${hebchar}+)־/)
       {
          $decl_hash_ref->{"pc"} = $1;
+      }
+      elsif (/נ"ר\s*(${hebchar}+)־/)
+      {
+         $decl_hash_ref->{"fpc"} = $1;
+      }
+      elsif (/נ'\s*(${hebchar}+)־/)
+      {
+         $decl_hash_ref->{"fc"} = $1;
       }
       elsif (/נ"ר\s*(${hebchar}+)/)
       {
@@ -288,10 +311,24 @@ sub GetDeclensions
 
    if ($detected < @decls)
    {
-      WikiPrint();
+#      WikiPrint();
    }
 
    return $decl_hash_ref;
+}
+
+# return s for single syllable, 1 for first syllable, 0 otherwise (won't dump)
+sub GetStress
+{
+   my ($pronunciation) = @_;
+
+   # count vowels
+   my $count = () = $pronunciation =~ /[aeiou]/g;
+   return "s" if ($count == 1);
+
+   return "1" if ($pronunciation =~ /^\'\'\'/);
+
+   return "0";
 }
 
 sub GetNituah
@@ -333,6 +370,12 @@ sub GetNituah
       if ($nituah =~ /\{\{משקל\|(.*?)\}\}/s)
       {
          $nituah_hash_ref->{"mishkal"} = $1;
+      }
+
+      if ($nituah =~ /\|\s*הגייה=(.*?)\s*\|/s)
+      {
+         my $pronunciation = $1;
+         $nituah_hash_ref->{"stress"} = GetStress($pronunciation);
       }
    }
 
