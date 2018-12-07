@@ -7,6 +7,7 @@
 # 04-Sep-08 | iorsh@users.sourceforge.net | Optional $definiton field,
 #           |                             | simple progress indicator
 # 17-Jun-09 | iorsh@users.sourceforge.net | Fixed for empty description
+# 09-Jan-11 | iorsh@users.sourceforge.net | Fixed for empty translation
 
 use strict;
 use integer;
@@ -127,6 +128,7 @@ sub AddMeaningFromVariant
    if (!defined $word_node)
    {
       print STDERR "Bad word in heading: " . $heading . "\n";
+#     print STDERR "*[[" . $heading . "]]\n"; # For Wiktionary
       return 0;
    }
 
@@ -139,13 +141,21 @@ sub AddMeaningFromVariant
       $definition = $def_item->getFirstChild->textContent;
    }
 
-   my $translation = $variant->getElementsByTagName('translation')->item(0);
+   my $trans_item = $variant->getElementsByTagName('translation')->item(0);
+   my $en_trans;
 
    # Skip if no English translation is present.
-   return 0 if !$translation->getElementsByTagName('en');
-
-   my $en_trans = $translation->getElementsByTagName('en')->item(0)
-                              ->getFirstChild->textContent;
+   if ($trans_item->getElementsByTagName('en') &&
+       $trans_item->getElementsByTagName('en')->item(0)->getFirstChild)
+   {
+      $en_trans = $trans_item->getElementsByTagName('en')->item(0)
+                             ->getFirstChild->textContent;
+   }
+   else
+   {
+#     print STDERR "Bad translation: " . $heading . "\n";
+      return 0;
+   }
 
    my @meaning = ($word, $definition, $en_trans);
    push @$entry, [@meaning];
