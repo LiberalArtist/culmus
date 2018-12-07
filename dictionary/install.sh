@@ -5,7 +5,9 @@
 # 22-Aug-08 | iorsh@users.sourceforge.net | Created
 # 17-Sep-08 | iorsh@users.sourceforge.net | Added Hebrew WordNet
 # 28-Nov-08 | iorsh@users.sourceforge.net | Added Waldstein's dictionary
+# 07-May-09 | iorsh@users.sourceforge.net | make dir /usr/share/dictd
 
+mkdir -p /usr/share/dictd
 cp wiktionary-he-eng.* /usr/share/dictd/
 cp wordnet-he-eng.* /usr/share/dictd/
 cp waldstein-he-eng.* /usr/share/dictd/

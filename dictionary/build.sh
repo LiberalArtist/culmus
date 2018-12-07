@@ -6,13 +6,14 @@
 # 17-Sep-08 | iorsh@users.sourceforge.net | Added Hebrew WordNet
 # 28-Nov-08 | iorsh@users.sourceforge.net | Added Waldstein scans
 # 15-Apr-09 | iorsh@users.sourceforge.net | Updated for 20090423 wiktionary.
+# 17-Jun-09 | iorsh@users.sourceforge.net | Updated for 20090608 wiktionary.
 
 cp FOLDOC_head_wikt.txt hewiktionary.foldoc
 cp FOLDOC_head_mwn.txt  hebwordnet.foldoc
 cp FOLDOC_head_wald.txt waldstein-he-en.foldoc
 
 echo 'Building Culmus abstract XML files...'
-./HeWiktionary_2_CulmusDic.pl hewiktionary-20090423-pages-articles.xml > hewiktionary-culmus.xml
+./HeWiktionary_2_CulmusDic.pl hewiktionary-20090608-pages-articles.xml > hewiktionary-culmus.xml
 ./HebrewWordNet_2_CulmusDic.pl hebrew_synonyms.xml hebrew_synsets.xml > hebwordnet-culmus.xml
 
 echo 'Building FOLDOC files...'

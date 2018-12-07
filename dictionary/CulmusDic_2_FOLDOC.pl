@@ -6,6 +6,7 @@
 # 22-Aug-08 | iorsh@users.sourceforge.net | Created
 # 04-Sep-08 | iorsh@users.sourceforge.net | Optional $definiton field,
 #           |                             | simple progress indicator
+# 17-Jun-09 | iorsh@users.sourceforge.net | Fixed for empty description
 
 use strict;
 use integer;
@@ -130,12 +131,12 @@ sub AddMeaningFromVariant
    }
 
    my $word = $word_node->textContent;
+   my $def_item = $variant->getElementsByTagName('definiton')->item(0);
    my $definition;
 
-   if ($variant->getElementsByTagName('definiton')->item(0))
+   if ($def_item && $def_item->getFirstChild)
    {
-      $definition = $variant->getElementsByTagName('definiton')->item(0)
-                            ->getFirstChild->textContent;
+      $definition = $def_item->getFirstChild->textContent;
    }
 
    my $translation = $variant->getElementsByTagName('translation')->item(0);
