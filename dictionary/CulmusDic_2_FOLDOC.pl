@@ -8,6 +8,7 @@
 #           |                             | simple progress indicator
 # 17-Jun-09 | iorsh@users.sourceforge.net | Fixed for empty description
 # 09-Jan-11 | iorsh@users.sourceforge.net | Fixed for empty translation
+# 29-Jan-11 | iorsh@users.sourceforge.net | Cleanup, another minor xlat fix
 
 use strict;
 use integer;
@@ -30,10 +31,6 @@ my $parser = XML::LibXML->new();
 my $doc = $parser->parse_file($file);
 my $counter = 0;
 my $total = 0;
-
-my $xml_out = XML::LibXML::Document->new();
-my $root_out = $xml_out->createElement('culmus');
-$xml_out->setDocumentElement($root_out);
 
 # This hash represents the entire dictionary.
 # $synonim1 is actually the $key itself.
@@ -145,7 +142,7 @@ sub AddMeaningFromVariant
    my $en_trans;
 
    # Skip if no English translation is present.
-   if ($trans_item->getElementsByTagName('en') &&
+   if ($trans_item && $trans_item->getElementsByTagName('en') &&
        $trans_item->getElementsByTagName('en')->item(0)->getFirstChild)
    {
       $en_trans = $trans_item->getElementsByTagName('en')->item(0)
