@@ -3,7 +3,7 @@
     xmlns:xlink="http://www.w3.org/1999/xlink">
 
     <identifier value="org.culmus.ooo.nakdan.CulmusOOoNakdan"/>
-    <version value="20120218" />    
+    <version value="20120304" />    
     <display-name>
         <name lang="en-US">Automatic Nakdan</name>
         <name lang="he-IL">נקדן אוטומטי</name>

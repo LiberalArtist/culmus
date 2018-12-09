@@ -16,6 +16,8 @@ public class TestNakdan
 	check(H.BETH+H.YOD+H.TSADI+H.HE, H.BETH+H.HIRIQ+H.DAGESH+H.TSADI+H.QAMATS+H.DAGESH+H.HE);
 	// ledavar (en. for a thing)
 	check(H.LAMED+H.DALET+H.BETH+H.RESH, H.LAMED+H.SHVA+H.DALET+H.QAMATS+H.BETH+H.QAMATS+H.RESH);
+	// sipim (en. for pl. edges)
+	check(H.SAMECH+H.PE+H.YOD+H.FINALMEM, H.SAMECH+H.HIRIQ+H.PE+H.HIRIQ+H.DAGESH+H.YOD+H.FINALMEM);
     }
 
     private static void check(String aTerm, String menukad)

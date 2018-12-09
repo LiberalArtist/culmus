@@ -26,8 +26,8 @@ cp manifest.xml META-INF/
 #fi
 
 #compile thesaurus
-javac -cp .:$CLASSPATH org/culmus/nakdan/TestNakdan.java
-javac -cp .:$CLASSPATH org/culmus/ooo/nakdan/CulmusOOoNakdan.java
+javac -source 1.5 -cp .:$CLASSPATH org/culmus/nakdan/TestNakdan.java
+javac -source 1.5 -cp .:$CLASSPATH org/culmus/ooo/nakdan/CulmusOOoNakdan.java
 
 #delete source files from package directory structure
 rm org/ivrix/hspell/*.java
@@ -36,12 +36,12 @@ rm org/culmus/ooo/nakdan/*.java
 rm org/culmus/ooo/xmeaningimpltd/*.java
 
 #clean
-rm CulmusOOoNakdan.uno.jar CulmusOOoNakdan.uno.pkg
+rm CulmusOOoNakdan.uno.jar CulmusOOoNakdan.20120304.oxt
 
 #create CulmusOOoNakdan.uno.jar
 jar -cvmf MANIFEST.MF CulmusOOoNakdan.uno.jar org/
 
-#create uno package which is nothing but a zip file with the extension .uno.pkg
-zip CulmusOOoNakdan.uno.pkg META-INF/manifest.xml CulmusOOoNakdan.uno.jar description.xml culmus-logo.png CHANGES GNU-GPL LICENSE
+#create uno package which is nothing but a zip file with the extension .oxt
+zip CulmusOOoNakdan.20120304.oxt META-INF/manifest.xml CulmusOOoNakdan.uno.jar description.xml culmus-logo.png CHANGES GNU-GPL LICENSE
 
 rm -rf org/ META-INF/
