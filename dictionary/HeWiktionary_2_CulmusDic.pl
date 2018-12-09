@@ -8,6 +8,7 @@
 # 29-Jan-11 | iorsh@users.sourceforge.net | Fixed extraction of description,
 #           |                             | more lexical data extracted.
 # 12-Feb-11 | iorsh@users.sourceforge.net | Recognize shortcuts for gender and category.
+# 24-Feb-11 | iorsh@users.sourceforge.net | Fix description extract.
 
 use strict;
 use integer;
@@ -203,6 +204,7 @@ sub GetDescription
 #      }
 
    # Further clean description.
+   $desc =~ s/\{\{הפניה\|.*\}\}//sg; # remove inline references
    $desc =~ s/\{\{משלב\|/\[/sg;
    $desc =~ s/\{\{רובד\|/\[/sg;
    $desc =~ s/\{\{/\[/sg; # remove curled braces
@@ -303,7 +305,9 @@ sub GetDeclensions
       }
    }
 
-   my $detected = ($decl_hash_ref->{"pc"} ? 1 : 0) +
+   my $detected = ($decl_hash_ref->{"fpc"} ? 1 : 0) +
+                  ($decl_hash_ref->{"pc"} ? 1 : 0) +
+                  ($decl_hash_ref->{"fc"} ? 1 : 0) +
                   ($decl_hash_ref->{"fp"} ? 1 : 0) +
                   ($decl_hash_ref->{"f"} ? 1 : 0) +
                   ($decl_hash_ref->{"c"} ? 1 : 0) +
@@ -420,6 +424,10 @@ sub AddDeclensionsToXml
 
    my $declensions = $1;
    return 0 if !$declensions;
+
+   # replace geresh with quote, gershaim w/dblquote
+   $declensions =~ s/׳/'/sg;
+   $declensions =~ s/״/"/sg;
 
    # <declensions>...</declensions>
    my $decls_out = $var_out->ownerDocument->createElement('declensions');
