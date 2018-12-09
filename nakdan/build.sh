@@ -36,12 +36,15 @@ rm org/culmus/ooo/nakdan/*.java
 rm org/culmus/ooo/xmeaningimpltd/*.java
 
 #clean
-rm CulmusOOoNakdan.uno.jar CulmusOOoNakdan.20120304.oxt
+rm CulmusOOoNakdan.uno.jar CulmusOOoNakdan.20141029.oxt
 
 #create CulmusOOoNakdan.uno.jar
 jar -cvmf MANIFEST.MF CulmusOOoNakdan.uno.jar org/
 
 #create uno package which is nothing but a zip file with the extension .oxt
-zip CulmusOOoNakdan.20120304.oxt META-INF/manifest.xml CulmusOOoNakdan.uno.jar description.xml culmus-logo.png CHANGES GNU-GPL LICENSE
+zip CulmusOOoNakdan.20141029.oxt META-INF/manifest.xml CulmusOOoNakdan.uno.jar description.xml culmus-logo.png CHANGES GNU-GPL LICENSE
 
 rm -rf org/ META-INF/
+
+echo 'Testing...'
+java -jar CulmusOOoNakdan.uno.jar

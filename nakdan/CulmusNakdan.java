@@ -10,8 +10,8 @@ public class CulmusNakdan
 {
     public static class Key
     {
-	public HSplit split;
-	public HLingData ld;
+	public final HSplit split;
+	public final HLingData ld;
 
 	public Key(HSplit split_, HLingData ld_)
 	{
@@ -51,7 +51,12 @@ public class CulmusNakdan
     private static Entry queryOneMeaning(Key key, String prefix)
     {
         DictionaryDataReader reader = DictionaryDataReader.getInstance();
-	Set<LexicalItem> lexset = reader.get(key.ld.stem);
+        Set<LexicalItem> lexset;
+
+        if (key.ld.category == HLingData.Category.Uncategorized)
+            lexset = reader.get(key.split.baseword);
+        else
+	    lexset = reader.get(key.ld.stem);
 
 	Vector<Value> values = new Vector();
 
@@ -63,7 +68,7 @@ public class CulmusNakdan
 		{
 		    String menukad = item.resolve(key.ld);
 
-		    menukad = NikudRuleFactory.addPrefix(menukad, prefix, key.ld);
+		    menukad = NikudRuleFactory.addPrefix(menukad, prefix, key.ld, item);
 		    values.add(new Value(item, menukad));
 		}
 		catch (NakdanException e)
@@ -139,17 +144,13 @@ public class CulmusNakdan
 
 		// BakalHaShimush could have swallowed HeHaYedia.
 		// Check it and retrieve an additional variant.
-		if (ld.possessive == HLingData.PosessivePlus.Indefinite &&
+		if (ld.possessive == HLingData.PossessivePlus.Indefinite &&
 		    prefix.length() > 0 && (prefix.charAt(0) == H.beth ||
 					    prefix.charAt(0) == H.kaf ||
 					    prefix.charAt(0) == H.lamed))
 		{
-		    // Clone HLingData
-		    HLingData ld2 = new HLingData(ld.stem, ld.desc, ld.ps);
-
-		    // Modify possessive property
-		    ld2.possessive = HLingData.PosessivePlus.Definite;
-		    ld2.desc = ld2.desc + ","+H.MEM+H.YOD+H.VAV+H.DALET+H.AYIN;
+		    // Copy HLingData with "definite" property
+		    HLingData ld2 = new HLingData(ld, true);
 
 		    Key key2 = new Key(split, ld2);
 		    String prefix2 = split.prefix + H.HE;

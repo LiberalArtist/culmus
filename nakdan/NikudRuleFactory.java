@@ -9,7 +9,8 @@ import org.ivrix.hspell.*;
 
 public class NikudRuleFactory
 {
-    private static NikudRule prefixRule(String base /*in*/, StringBuffer prefixes /*in-out*/)
+    private static NikudRule
+    prefixRule(String base /*in*/, StringBuffer prefixes /*in-out*/)
     {
 	String prefix = prefixes.substring(prefixes.length() - 1);
 
@@ -30,7 +31,7 @@ public class NikudRuleFactory
 	return new EmptyRule();
     }
 
-    public static String addPrefix(String base, String prefix, HLingData ld)
+    public static String addPrefix(String base, String prefix, HLingData ld, LexicalItem lex)
     {
 	String result = base;
 	StringBuffer curPrefix = new StringBuffer(prefix);
@@ -38,7 +39,7 @@ public class NikudRuleFactory
 	while (curPrefix.length() > 0)
 	{
 	    NikudRule rule = prefixRule(result, curPrefix);
-	    result = rule.apply(result, ld);
+	    result = rule.apply(result, ld, lex);
 	}
 
 	return result;
@@ -73,12 +74,12 @@ public class NikudRuleFactory
 
 interface NikudRule
 {
-    String apply(String base, HLingData ld);
+    String apply(String base, HLingData ld, LexicalItem lex);
 }
 
 class EmptyRule implements NikudRule
 {
-    public String apply(String base, HLingData ld)
+    public String apply(String base, HLingData ld, LexicalItem lex)
     {
 	return base;
     }

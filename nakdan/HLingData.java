@@ -7,19 +7,9 @@ import java.lang.String;
 
 public class HLingData
 {
-    public enum PosessivePlus
-    {
-	Indefinite, Definite, ConstructState,
-	FirstSingular, FirstPlural,
-	SecondSingularMasculine, SecondPluralMasculine,
-	SecondSingularFeminine, SecondPluralFeminine,
-	ThirdSingularMasculine, ThirdPluralMasculine,
-	ThirdSingularFeminine, ThirdPluralFeminine
-    }
-
     public enum Category
     {
-	Undefined, Noun, Adjective, Verb
+	Undefined, Noun, Adjective, Verb, Uncategorized
     }
 
     public enum Gender
@@ -32,20 +22,24 @@ public class HLingData
 	Undefined, Singular, Plural
     }
 
-    public enum Stress
+    public enum PossessivePlus
     {
-	Unknown, FirstSyllable, SecondSyllable, ThirdSyllable, LastSyllable
+	Indefinite, Definite, ConstructState,
+	FirstSingular, FirstPlural,
+	SecondSingularMasculine, SecondPluralMasculine,
+	SecondSingularFeminine, SecondPluralFeminine,
+	ThirdSingularMasculine, ThirdPluralMasculine,
+	ThirdSingularFeminine, ThirdPluralFeminine
     }
 
     public String stem;
-    public String desc;
+    private final String desc;
     public int ps;
 
     public Category category = Category.Undefined;
     public Gender gender = Gender.Undefined;
     public Number number = Number.Undefined;
-    public PosessivePlus possessive = PosessivePlus.Indefinite;
-    public Stress stress = Stress.Unknown;
+    public PossessivePlus possessive = PossessivePlus.Indefinite;
 
     public HLingData(String stem_, String desc_, int ps_)
     {
@@ -55,6 +49,22 @@ public class HLingData
 	ParseDesc(desc);
     }
 
+    public HLingData(HLingData ld, boolean definite)
+    {
+        this(ld.stem, ld.desc, ld.ps);
+
+        if (definite)
+            possessive = PossessivePlus.Definite;
+    }
+
+    public String getDesc()
+    {
+        if (possessive == PossessivePlus.Definite)
+            return desc + ","+H.MEM+H.YOD+H.VAV+H.DALET+H.AYIN;
+        else
+            return desc;
+    }
+
     private void ParseDesc(String desc_)
     {
 	String kinui = H.KAF+H.YOD+H.NUN+H.VAV+H.YOD+"/";
@@ -62,7 +72,7 @@ public class HLingData
 
 	if (kinuiIdx == -1)
 	{
-	    possessive = PosessivePlus.Indefinite;
+	    possessive = PossessivePlus.Indefinite;
 	    ParseBaseDesc(desc_);
 	}
 	else
@@ -79,6 +89,7 @@ public class HLingData
 	    case H.ayin : category = Category.Noun; break;
 	    case H.tav  : category = Category.Adjective; break;
 	    case H.pe   : category = Category.Verb; break;
+	    case 'x'    : category = Category.Uncategorized; return;
 	    default: category = Category.Undefined; return;
 	}
 
@@ -96,33 +107,33 @@ public class HLingData
 	    number = Number.Plural;
 
 	if (baseDesc.contains(H.SAMECH+H.MEM+H.YOD+H.KAF+H.VAV+H.TAV))
-	    possessive = PosessivePlus.ConstructState;
+	    possessive = PossessivePlus.ConstructState;
     }
 
-    private PosessivePlus PossessivePronoun(String kinuiGuf)
+    private PossessivePlus PossessivePronoun(String kinuiGuf)
     {
-	PosessivePlus pronoun = PosessivePlus.Indefinite;
+	PossessivePlus pronoun = PossessivePlus.Indefinite;
 
 	if (kinuiGuf.startsWith(",1,"+H.YOD))
-	    pronoun = PosessivePlus.FirstSingular;
+	    pronoun = PossessivePlus.FirstSingular;
 	else if (kinuiGuf.startsWith(",1,"+H.RESH))
-	    pronoun = PosessivePlus.FirstPlural;
+	    pronoun = PossessivePlus.FirstPlural;
 	else if (kinuiGuf.startsWith(H.ZAYIN+",2,"+H.YOD))
-	    pronoun = PosessivePlus.SecondSingularMasculine;
+	    pronoun = PossessivePlus.SecondSingularMasculine;
 	else if (kinuiGuf.startsWith(H.ZAYIN+",2,"+H.RESH))
-	    pronoun = PosessivePlus.SecondPluralMasculine;
+	    pronoun = PossessivePlus.SecondPluralMasculine;
 	else if (kinuiGuf.startsWith(H.NUN+",2,"+H.YOD))
-	    pronoun = PosessivePlus.SecondSingularFeminine;
+	    pronoun = PossessivePlus.SecondSingularFeminine;
 	else if (kinuiGuf.startsWith(H.NUN+",2,"+H.RESH))
-	    pronoun = PosessivePlus.SecondPluralFeminine;
+	    pronoun = PossessivePlus.SecondPluralFeminine;
 	else if (kinuiGuf.startsWith(H.ZAYIN+",3,"+H.YOD))
-	    pronoun = PosessivePlus.ThirdSingularMasculine;
+	    pronoun = PossessivePlus.ThirdSingularMasculine;
 	else if (kinuiGuf.startsWith(H.ZAYIN+",3,"+H.RESH))
-	    pronoun = PosessivePlus.ThirdPluralMasculine;
+	    pronoun = PossessivePlus.ThirdPluralMasculine;
 	else if (kinuiGuf.startsWith(H.NUN+",3,"+H.YOD))
-	    pronoun = PosessivePlus.ThirdSingularFeminine;
+	    pronoun = PossessivePlus.ThirdSingularFeminine;
 	else if (kinuiGuf.startsWith(H.NUN+",3,"+H.RESH))
-	    pronoun = PosessivePlus.ThirdPluralFeminine;
+	    pronoun = PossessivePlus.ThirdPluralFeminine;
 
 	return pronoun;
     }

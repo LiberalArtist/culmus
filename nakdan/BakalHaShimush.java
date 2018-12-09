@@ -18,7 +18,7 @@ class BakalHaShimush implements NikudRule
 	    prefix = prefix_ + H.DAGESH; // beth, kaf
     }
 
-    public String apply(String base, HLingData ld)
+    public String apply(String base, HLingData ld, LexicalItem lex)
     {
 	String result = "";
 
@@ -30,7 +30,7 @@ class BakalHaShimush implements NikudRule
 	base = NikudRuleFactory.removeDagesh(base);
 
 	// Prefix replaces he ha-yedia with the same diacritic
-	if (ld.possessive == HLingData.PosessivePlus.Definite)
+	if (ld.possessive == HLingData.PossessivePlus.Definite)
 	{
 	    result = prefix + base.substring(1);
 	}

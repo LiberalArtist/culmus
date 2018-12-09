@@ -16,8 +16,16 @@ public class TestNakdan
 	check(H.BETH+H.YOD+H.TSADI+H.HE, H.BETH+H.HIRIQ+H.DAGESH+H.TSADI+H.QAMATS+H.DAGESH+H.HE);
 	// ledavar (en. for a thing)
 	check(H.LAMED+H.DALET+H.BETH+H.RESH, H.LAMED+H.SHVA+H.DALET+H.QAMATS+H.BETH+H.QAMATS+H.RESH);
+	// ladavar (en. for the thing)
+	check(H.LAMED+H.DALET+H.BETH+H.RESH, H.LAMED+H.PATAH+H.DALET+H.DAGESH+H.QAMATS+H.BETH+H.QAMATS+H.RESH);
 	// sipim (en. for pl. edges)
 	check(H.SAMECH+H.PE+H.YOD+H.FINALMEM, H.SAMECH+H.HIRIQ+H.PE+H.HIRIQ+H.DAGESH+H.YOD+H.FINALMEM);
+        // einha (en. not you, m.)
+        check(H.ALEPH+H.YOD+H.NUN+H.FINALKAF, H.ALEPH+H.TSERE+H.YOD+H.NUN+H.SHVA+H.FINALKAF+H.QAMATS);
+        // eineh (en. not you, f.)
+        check(H.ALEPH+H.YOD+H.NUN+H.FINALKAF, H.ALEPH+H.TSERE+H.YOD+H.NUN+H.TSERE+H.FINALKAF+H.SHVA);
+        // shtaim (en. two, f.)
+        check(H.SHIN+H.TAV+H.YOD+H.YOD+H.FINALMEM, H.SHIN+H.SHINDOT+H.SHVA+H.TAV+H.DAGESH+H.PATAH+H.YOD+H.HIRIQ+H.FINALMEM);
     }
 
     private static void check(String aTerm, String menukad)

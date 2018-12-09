@@ -8,7 +8,7 @@ import org.ivrix.hspell.*;
 
 class MemHaShimush implements NikudRule
 {
-    public String apply(String base, HLingData ld)
+    public String apply(String base, HLingData ld, LexicalItem lex)
     {
 	String result = "";
 

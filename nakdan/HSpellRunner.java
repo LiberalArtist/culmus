@@ -50,7 +50,7 @@ public class HSpellRunner
 	    else if (line.charAt(0) == H.mem)
 	    {
 		String baseword = line.split(": ", 2)[1];
-		curSplit = new HSplit(word, baseword, 0, 0);
+		curSplit = new HSplit(word, baseword, 0);
 		splits.add(curSplit);
 	    }
 	    else if (line.charAt(0) == H.tsadi)
@@ -59,7 +59,7 @@ public class HSpellRunner
 		String prefix = word_w_prefix.split("\\+", 2)[0];
 		String baseword = word_w_prefix.split("\\+", 2)[1];
 
-		curSplit = new HSplit(word, baseword, prefix.length(), 0);
+		curSplit = new HSplit(word, baseword, prefix.length());
 		splits.add(curSplit);
 	    }
 	    else if (line.charAt(0) == '\t')

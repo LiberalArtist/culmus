@@ -158,26 +158,49 @@ public class CulmusOOoNakdan extends ComponentBase implements
 		HSplit split = entry.key.split;
 		HLingData ld = entry.key.ld;
 
-		String catCode;
-		switch (ld.category)
-		{
-		    case Noun:		catCode = H.AYIN; break;
-		    case Adjective:	catCode = H.TAV; break;
-		    case Verb:		catCode = H.PE; break;
-		    default:		catCode = "?";
-		}
-
 		if (entry.values != null)
 		{
 		    for (CulmusNakdan.Value value : entry.values)
 		    {
-			String meaning = split.prefix + "+" + split.baseword + "[" + catCode + "]: " + value.item.description;
+                        LexicalItem item = value.item;
+
+		        String catCode;
+ 		        switch (item.category)
+		        {
+		            case Noun:		catCode = H.AYIN; break;
+		            case Adjective:	catCode = H.TAV; break;
+		            case Verb:		catCode = H.PE; break;
+		            case Adposition:	catCode = H.MEM+". "+H.YOD+H.HET+H.SAMECH; break;
+		            case Numeral:	catCode = H.MEM+H.SAMECH+H.PE+H.RESH; break;
+		            default:
+			    {
+                                switch (ld.category)
+                                {
+		                    case Noun:		catCode = H.AYIN; break;
+	                            case Adjective:	catCode = H.TAV; break;
+		                    case Verb:		catCode = H.PE; break;
+		                    default:            catCode = "?";
+                                }
+                            }
+		        }
+
+			String meaning = "";
+                        if (split.prefix.length() > 0)
+                            meaning += split.prefix + "+";
+                        meaning += split.baseword + "[" + catCode + "]: " + item.description;
+
+                        String valueDesc = "";
+                        if (ld.category == HLingData.Category.Uncategorized)
+                            valueDesc = item.describe();
+                        else
+                            valueDesc = ld.getDesc();
+
 			if (!aMap.containsKey(meaning))
 			    aMap.put(meaning, new TreeSet());
 
 			if (!value.menukad.equals(""))
 			{
-			    aMap.get(meaning).add(value.menukad + " (" + ld.desc + ")");
+			    aMap.get(meaning).add(value.menukad + " (" + valueDesc + ")");
 			}
 		    }
 		}

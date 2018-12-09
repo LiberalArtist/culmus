@@ -8,7 +8,7 @@ import org.ivrix.hspell.*;
 
 class HeHaYedia implements NikudRule
 {
-    public String apply(String base, HLingData ld)
+    public String apply(String base, HLingData ld, LexicalItem lex)
     {
 	String result = "";
 
@@ -30,7 +30,7 @@ class HeHaYedia implements NikudRule
 	else if ((base.charAt(0) == H.he || base.charAt(0) == H.ayin) &&
 	    base.charAt(1) == H.qamats)
 	{
-	    if (ld.stress == HLingData.Stress.FirstSyllable)
+	    if (lex.stress == LexicalItem.Stress.FirstSyllable)
 		result = H.HE+H.QAMATS + base;
 	    else
 		result = H.HE+H.SEGOL + base;

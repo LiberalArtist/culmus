@@ -61,6 +61,5 @@ public final class DictionaryDataReader // Singleton
     {
 	return dict.get(entry);
     }
-
 }
 

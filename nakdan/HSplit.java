@@ -11,17 +11,12 @@ public class HSplit
 {
     public String prefix;
     public String baseword;
-    public int preflen;
-    public int prefspec;
     public List<HLingData> lingdata = new ArrayList();
 
-    public HSplit(String word, String baseword_, int preflen_, int prefspec_)
+    public HSplit(String word, String baseword_, int preflen)
     {
         baseword = baseword_;
-        preflen = preflen_;
-        prefspec = prefspec_;
-
-	prefix = word.substring(0, preflen_);
+	prefix = word.substring(0, preflen);
     }
 }
 
