@@ -12,13 +12,17 @@
 # 21-Jan-12 | iorsh@users.sourceforge.net | Updated for 20120114 wiktionary.
 # 18-Feb-12 | iorsh@users.sourceforge.net | Updated for 20120215 wiktionary, build nakdan.txt.
 # 04-Mar-12 | iorsh@users.sourceforge.net | Updated for 20120304 wiktionary, build nakdan.txt.
+# 02-Jun-12 | iorsh@users.sourceforge.net | Updated for 20120528 wiktionary.
+# 03-Sep-12 | iorsh@users.sourceforge.net | Updated for 20120902 wiktionary.
+# 12-Jan-13 | iorsh@users.sourceforge.net | Updated for 20130110 wiktionary.
+# 25-Sep-14 | iorsh@users.sourceforge.net | Fixed wiktionary wildcard.
 
 cp FOLDOC_head_wikt.txt hewiktionary.foldoc
 cp FOLDOC_head_mwn.txt  hebwordnet.foldoc
 cp FOLDOC_head_wald.txt waldstein-he-en.foldoc
 
 echo 'Building Culmus abstract XML files...'
-./HeWiktionary_2_CulmusDic.pl hewiktionary-20120304-pages-articles.xml > hewiktionary-culmus.xml
+./HeWiktionary_2_CulmusDic.pl hewiktionary-????????-pages-articles.xml > hewiktionary-culmus.xml
 ./HebrewWordNet_2_CulmusDic.pl hebrew_synonyms.xml hebrew_synsets.xml > hebwordnet-culmus.xml
 
 echo 'Building FOLDOC files...'

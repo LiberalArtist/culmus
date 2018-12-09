@@ -1,22 +1,19 @@
 This package is a collection of several dictionary sources, each with different license. Please see details below.
 
 -----------------------------------------------
-This package uses material from the Hebrew Wiktionary.
+This package uses material from the Hebrew Wiktionary (http://he.wiktionary.org).
 
-The file hewiktionary-20110129-pages-articles.xml is distributed under the terms
- of GFDL version 1.2 or later.
-
-Permission is granted to copy, distribute and/or modify the file hewiktionary-20110129-pages-articles.xml under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.
+The files hewiktionary-20140906-pages-articles.xml, wiktionary-he-eng.dict.dz, wiktionary-he-eng.index are distributed under the terms of Creative Commons Attribution-ShareAlike 3.0 Unported License, see http://creativecommons.org/licenses/by-sa/3.0/deed.he. Additional terms may apply. See http://wikimediafoundation.org/wiki/Terms_of_Use for details.
 
 -----------------------------------------------
 This package uses material from Mila - Knowledge Center for Processing Hebrew.
 
-The files hebrew_synonyms.xml, hebrew_synsets.xml are distributed under the terms of the GNU General Public License.
+The files hebrew_synonyms.xml, hebrew_synsets.xml, wordnet-he-eng.dict.dz, wordnet-he-eng.index are distributed under the terms of the GNU General Public License.
 
 -----------------------------------------------
 This package uses material from Abraham Waldstein's Hebrew-English dictionary.
 
-The files waldstein/*.txt are in the public domain.
+The files waldstein/*.txt, waldstein-he-eng.* are in the public domain.
 
 -----------------------------------------------
-The files build.sh, install.sh, CulmusDic_2_FOLDOC.pl, HeWiktionary_2_CulmusDic.pl, HebrewWordNet_2_CulmusDic.pl, WaldsteinHeEn_2_CulmusDic.pl were created by Maxim Iorsh. These files are in the public domain.
+The files build.sh, install.sh, CulmusDic_2_FOLDOC.pl, CulmusDic_2_nakdan.pl, HeWiktionary_2_CulmusDic.pl, HebrewWordNet_2_CulmusDic.pl, WaldsteinHeEn_2_CulmusDic.pl were created by Maxim Iorsh. These files are in the public domain.
