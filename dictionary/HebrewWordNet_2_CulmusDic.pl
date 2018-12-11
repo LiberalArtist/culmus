@@ -4,12 +4,13 @@
 # It is a PUBLIC DOMAIN - you may do with it anything you wish.
 
 # 22-Aug-08 | iorsh@users.sourceforge.net | Created
+# 12-Dec-18 | iorsh@users.sourceforge.net | Output intermediate XML as indented UTF-8.
 
 use strict;
 use integer;
 use XML::LibXML;
 use FileHandle;
-binmode(STDOUT, ":utf8");
+binmode(STDOUT);
 
 my $anglit = "\x{05d0}\x{05e0}\x{05d2}\x{05dc}\x{05d9}\x{05ea}";
 my $diacritics = "\x{05b0}\x{05b1}\x{05b2}\x{05b3}\x{05b4}\x{05b5}\x{05b6}\x{05b7}\x{05b8}\x{05b9}\x{05ba}\x{05bb}\x{05bc}\x{05c1}\x{05c2}";
@@ -193,7 +194,7 @@ foreach my $keyword ( keys %dictionary )
 }
 
 # Create XML file in Culmus format
-my $xml_out = XML::LibXML::Document->new();
+my $xml_out = XML::LibXML::Document->new("1.0", "UTF-8");
 my $root_out = $xml_out->createElement('culmus');
 $xml_out->setDocumentElement($root_out);
 
@@ -249,5 +250,5 @@ foreach my $keyword ( sort keys %dictionary )
 
 print STDERR $total . "\n";
 
-print $xml_out->toString;
+print $xml_out->toString(2);
 

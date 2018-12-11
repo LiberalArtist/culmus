@@ -9,13 +9,14 @@
 #           |                             | more lexical data extracted.
 # 12-Feb-11 | iorsh@users.sourceforge.net | Recognize shortcuts for gender and category.
 # 24-Feb-11 | iorsh@users.sourceforge.net | Fix description extract.
+# 12-Dec-18 | iorsh@users.sourceforge.net | Output intermediate XML as indented UTF-8.
 
 use strict;
 use integer;
 use utf8;   # This script contains unicode characters
 use XML::LibXML;
 use FileHandle;
-binmode(STDOUT, ":utf8");
+binmode(STDOUT);
 
 sub AddTranslationToXml;
 sub AddDeclensionsToXml;
@@ -45,7 +46,7 @@ my $parser = XML::LibXML->new();
 my $doc = $parser->parse_file($file);
 my $total = 0;
 
-my $xml_out = XML::LibXML::Document->new();
+my $xml_out = XML::LibXML::Document->new("1.0", "UTF-8");
 my $root_out = $xml_out->createElement('culmus');
 $xml_out->setDocumentElement($root_out);
 

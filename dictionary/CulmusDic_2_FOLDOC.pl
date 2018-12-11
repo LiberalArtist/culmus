@@ -9,6 +9,7 @@
 # 17-Jun-09 | iorsh@users.sourceforge.net | Fixed for empty description
 # 09-Jan-11 | iorsh@users.sourceforge.net | Fixed for empty translation
 # 29-Jan-11 | iorsh@users.sourceforge.net | Cleanup, another minor xlat fix
+# 12-Dec-18 | iorsh@users.sourceforge.net | Order entries in FOLDOC for consistency.
 
 use strict;
 use integer;
@@ -67,7 +68,7 @@ foreach my $key ($doc->getElementsByTagName('key'))
 AddReferencesToDictionary(\@references, \%dictionary);
 
 # Print in FOLDOC format
-foreach my $key (keys %dictionary)
+foreach my $key (sort(keys %dictionary))
 {
    my @entry = @{$dictionary{$key}};
 
