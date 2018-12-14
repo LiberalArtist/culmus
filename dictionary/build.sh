@@ -16,6 +16,7 @@
 # 03-Sep-12 | iorsh@users.sourceforge.net | Updated for 20120902 wiktionary.
 # 12-Jan-13 | iorsh@users.sourceforge.net | Updated for 20130110 wiktionary.
 # 25-Sep-14 | iorsh@users.sourceforge.net | Fixed wiktionary wildcard.
+# 29-Sep-14 | iorsh@users.sourceforge.net | Put milot.utf,extrawords.txt into nakdan.txt.
 
 cp FOLDOC_head_wikt.txt hewiktionary.foldoc
 cp FOLDOC_head_mwn.txt  hebwordnet.foldoc
@@ -31,6 +32,8 @@ echo 'Building FOLDOC files...'
 
 echo 'Building nakdan.txt...'
 ./CulmusDic_2_nakdan.pl hewiktionary-culmus.xml > nakdan.txt
+awk '{ if (NR==1) sub(/^\xef\xbb\xbf/,""); print }' milot.utf | grep '|A' >> nakdan.txt
+awk '{ if (NR==1) sub(/^\xef\xbb\xbf/,""); print }' extrawords.txt | grep '|N' >> nakdan.txt
 
 echo 'Building Waldstein FOLDOC file...'
 cat waldstein/*.txt > waldstein_he_en.txt
