@@ -9,9 +9,11 @@
 # 17-Jun-09 | iorsh@users.sourceforge.net | Fixed for empty description
 # 09-Jan-11 | iorsh@users.sourceforge.net | Fixed for empty translation
 # 29-Jan-11 | iorsh@users.sourceforge.net | Cleanup, another minor xlat fix
+# 15-Dec-18 | iorsh@users.sourceforge.net | Process only single Hebrew words
 
 use strict;
 use integer;
+use utf8;   # This script contains unicode characters
 use XML::LibXML;
 use FileHandle;
 binmode(STDOUT, ":utf8");
@@ -41,6 +43,9 @@ foreach my $variant ($doc->getElementsByTagName('variant'))
    my $ktiv_male = GetChildText($variant, 'ktiv_male');
 
    next if (!defined $word || !defined $ktiv_male);
+
+   # Process only single Hebrew words
+   next if ($ktiv_male !~ /^[א-ת\'\"\x{05F3}\x{05F4}]+$/);
 
    my $definition = GetChildText($variant, 'definiton');
 

@@ -10,6 +10,7 @@
 # 12-Feb-11 | iorsh@users.sourceforge.net | Recognize shortcuts for gender and category.
 # 24-Feb-11 | iorsh@users.sourceforge.net | Fix description extract.
 # 12-Dec-18 | iorsh@users.sourceforge.net | Output intermediate XML as indented UTF-8.
+# 15-Dec-18 | iorsh@users.sourceforge.net | Remove excessive whitespace in ktiv_male form
 
 use strict;
 use integer;
@@ -358,7 +359,7 @@ sub GetNituah
       $nituah_hash_ref->{"category"} = GetCategory($nituah);
       $nituah_hash_ref->{"gender"} = GetGender($nituah);
 
-      if ($nituah =~ /\|\s*כתיב\sמלא=(.*?)\s*\|/s)
+      if ($nituah =~ /\|\s*כתיב\sמלא=\s*(.*?)\s*\|/s)
       {
          $nituah_hash_ref->{"ktiv_male"} = $1;
       }
