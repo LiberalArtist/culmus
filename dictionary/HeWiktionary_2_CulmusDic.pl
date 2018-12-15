@@ -11,6 +11,7 @@
 # 24-Feb-11 | iorsh@users.sourceforge.net | Fix description extract.
 # 12-Dec-18 | iorsh@users.sourceforge.net | Output intermediate XML as indented UTF-8.
 # 15-Dec-18 | iorsh@users.sourceforge.net | Remove excessive whitespace in ktiv_male form
+# 21-Jul-17 | iorsh@users.sourceforge.net | Grammatical analysis for verbs.
 
 use strict;
 use integer;
@@ -257,6 +258,36 @@ sub GetGender
    return "feminine"  if ($gender eq "נ");
 }
 
+sub GetRoot
+{
+   my ($nituah) = @_;
+   my ($root, $rootvar);
+
+   if ($nituah =~ /$re_root/s)
+   {
+      $root = $1.$2.$3;
+      if ($nituah =~ /\{\{שרש\|[א-ת]*\s([א-ת])\|/s)
+      {
+         $rootvar = ord($1)-ord("א")+1; # "א" => 1, "ב" => 2 etc.
+      }
+   }
+
+   return ($root, $rootvar);
+}
+
+sub GetKtivMale
+{
+   my ($nituah) = @_;
+   my $ktiv_male;
+
+   if ($nituah =~ /\|\s*כתיב\sמלא=\s*(.*?)\s*\|/s)
+   {
+      $ktiv_male = $1;
+   }
+
+   return $ktiv_male;
+}
+
 sub GetDeclensions
 {
    my ($declensions) = @_;
@@ -343,7 +374,24 @@ sub GetNituah
    my $nituah_hash_ref;
 
    # Modified example from (?>pattern), perlre 5.8.8
-   if ( $chunk =~ /\{\{ניתוח\sדקדוקי
+   if ( $chunk =~ /\{\{ניתוח\sדקדוקי\sלפועל
+	((
+	(?> [^{}]+ )
+	|
+	\{\{ [^{}]* \}\}
+	)+)
+	\}\}
+	/sx)
+   {
+      my $nituah = $1;
+
+      $nituah_hash_ref->{"nituah"} = $nituah;
+
+      $nituah_hash_ref->{"category"} = "verb";
+      $nituah_hash_ref->{"ktiv_male"} = GetKtivMale($nituah);
+      ($nituah_hash_ref->{"root"}, $nituah_hash_ref->{"rootvar"}) = GetRoot($nituah);
+   }
+   elsif ( $chunk =~ /\{\{ניתוח\sדקדוקי
 	((
 	(?> [^{}]+ )
 	|
@@ -358,20 +406,8 @@ sub GetNituah
 
       $nituah_hash_ref->{"category"} = GetCategory($nituah);
       $nituah_hash_ref->{"gender"} = GetGender($nituah);
-
-      if ($nituah =~ /\|\s*כתיב\sמלא=\s*(.*?)\s*\|/s)
-      {
-         $nituah_hash_ref->{"ktiv_male"} = $1;
-      }
-
-      if ($nituah =~ /$re_root/s)
-      {
-         $nituah_hash_ref->{"root"} = $1.$2.$3;
-         if ($nituah =~ /\{\{שרש\|[א-ת]*\s([א-ת])\|/s)
-         {
-            $nituah_hash_ref->{"rootvar"} = ord($1)-ord("א")+1; # "א" => 1, "ב" => 2 etc.
-         }
-      }
+      $nituah_hash_ref->{"ktiv_male"} = GetKtivMale($nituah);
+      ($nituah_hash_ref->{"root"}, $nituah_hash_ref->{"rootvar"}) = GetRoot($nituah);
 
       if ($nituah =~ /\{\{משקל\|(.*?)\}\}/s)
       {
