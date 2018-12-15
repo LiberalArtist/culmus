@@ -436,7 +436,7 @@ sub AddDeclensionsToXml
 
    my $decl_ref = GetDeclensions($declensions);
 
-   foreach my $k (keys %$decl_ref)
+   foreach my $k (sort(keys %$decl_ref))
    {
       my $decl_out = $var_out->ownerDocument->createElement('decl');
       $decl_out->appendTextNode($decl_ref->{$k});
