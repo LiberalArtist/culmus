@@ -12,6 +12,7 @@
 # 12-Dec-18 | iorsh@users.sourceforge.net | Output intermediate XML as indented UTF-8.
 # 15-Dec-18 | iorsh@users.sourceforge.net | Remove excessive whitespace in ktiv_male form
 # 21-Jul-17 | iorsh@users.sourceforge.net | Grammatical analysis for verbs.
+# 16-Dec-18 | iorsh@users.sourceforge.net | Extract verb conjugations.
 
 use strict;
 use integer;
@@ -22,16 +23,20 @@ binmode(STDOUT);
 
 sub AddTranslationToXml;
 sub AddDeclensionsToXml;
+sub AddOneBinyan;
+sub AddOneConjugation;
+sub AddOneConjugationToXml;
 sub GetDescription;
 sub GetNituah;
 sub GetDeclensions;
 sub GetStress;
+sub AddConjugationsToXml;
 
 sub WikiPrint;
 
 my $WIKIAUTOLIST = 0;
 
-my $diacritics = "\x{05b0}\x{05b1}\x{05b2}\x{05b3}\x{05b4}\x{05b5}\x{05b6}\x{05b7}\x{05b8}\x{05b9}\x{05ba}\x{05bb}\x{05bc}\x{05c1}\x{05c2}";
+my $diacritics = "\x{05b0}-\x{05bc}\x{05c1}\x{05c2}";
 my $hebletters = qr/[\x{05d0}-\x{05ea}]/;
 my $shinsindot = qr/[\x{05c1}\x{05c2}]/;
 my $hebchar = qr/[\x{05b0}-\x{05ea}]/;
@@ -90,6 +95,8 @@ foreach my $page ($doc->getElementsByTagName('page'))
    next if (!$block);
 
    $text = $block->textContent;
+
+   AddConjugationsToXml($root_out, $text);
 
    my $key_out = $xml_out->createElement('key');
    $key_out->appendTextChild("keyword", $title);
@@ -488,4 +495,151 @@ sub AddDeclensionsToXml
    $var_out->appendChild($decls_out);
 
    return 1;
+}
+
+sub AddOneBinyan
+{
+   my ($conjug, $key, $conjug_hash_ref) = @_;
+
+   return AddOneConjugation($conjug, $key." עבר", $conjug_hash_ref) ||
+          AddOneConjugation($conjug, $key." הווה", $conjug_hash_ref) ||
+          AddOneConjugation($conjug, $key." עתיד", $conjug_hash_ref) ||
+          AddOneConjugation($conjug, $key." ציווי", $conjug_hash_ref) ||
+          AddOneConjugation($conjug, $key." שם הפועל", $conjug_hash_ref) ||
+          0;
+}
+
+sub AddOneConjugation
+{
+   my ($conjug, $key, $conjug_hash_ref) = @_;
+
+   if ($conjug =~ /$key=\s*(${hebchar}+)\s*/)
+   {
+      $conjug_hash_ref->{$key} = $1;
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+sub AddOneBinyanToXml
+{
+   my ($root_out, $key, $xml_key, $conjug_hash_ref, $linkmap_ref) = @_;
+   bless $root_out, "XML::LibXML::Element";
+
+   my $past = $conjug_hash_ref->{$key." עבר"};
+
+   return if not $past;
+
+   my $verb_out = $root_out->ownerDocument->createElement('verb');
+   $verb_out->setAttribute("binyan", $xml_key);
+
+   if ($linkmap_ref->{$past} =~ /^(.*?)\#(.*?)$/s)
+   {
+      $verb_out->appendTextChild("reference", $1);
+      $verb_out->appendTextChild("variant", $2);
+   }
+   else
+   {
+      $verb_out->appendTextChild("reference", $linkmap_ref->{$past});
+   }
+
+   my $conjugs_out = $root_out->ownerDocument->createElement('conjugations');
+
+   AddOneConjugationToXml($conjugs_out, $key." עבר", "past", $conjug_hash_ref);
+   AddOneConjugationToXml($conjugs_out, $key." הווה", "present", $conjug_hash_ref);
+   AddOneConjugationToXml($conjugs_out, $key." הווה פעול", "participle", $conjug_hash_ref);
+   AddOneConjugationToXml($conjugs_out, $key." עתיד", "future", $conjug_hash_ref);
+   AddOneConjugationToXml($conjugs_out, $key." ציווי", "imperative", $conjug_hash_ref);
+   AddOneConjugationToXml($conjugs_out, $key." שם הפועל", "infinitive", $conjug_hash_ref);
+
+   $verb_out->appendChild($conjugs_out);
+   $root_out->appendChild($verb_out);
+}
+
+sub AddOneConjugationToXml
+{
+   my ($conjugs_out, $key, $xml_key, $conjug_hash_ref) = @_;
+   bless $conjugs_out, "XML::LibXML::Element";
+
+   return if not $conjug_hash_ref->{$key};
+
+   my $conjug_out = $root_out->ownerDocument->createElement('conjugation');
+   $conjug_out->appendTextNode($conjug_hash_ref->{$key});
+   $conjug_out->setAttribute("tense", $xml_key);
+
+   $conjugs_out->appendChild($conjug_out);
+}
+
+sub AddConjugationsToXml
+{
+   my ($xml_root_out, $text) = @_;
+   bless $xml_root_out, "XML::LibXML::Element";
+
+   my $conjug_hash_ref = {};
+
+   # Modified example from (?>pattern), perlre 5.8.8
+   if ( $text =~ /\{\{נטיות\sפעלים
+	((
+	(?> [^{}]+ )
+	|
+	\{\{ [^{}]* \}\}
+	)+)
+	\}\}
+	/sx)
+   {
+      my $conjugations = $1;
+      my $linkmap_ref = {};
+
+      # Map and remove wikilinks
+      while ($conjugations =~ /\[\[([^\[\]]*?)\|(.*?)\]\]/g)
+      {
+         $linkmap_ref->{$2} = $1; # map
+      }
+      $conjugations =~ s/\[\[[^\[\]]*?\|(.*?)\]\]/$1/sg; # remove
+
+      while ($conjugations =~ /\[\[([^\[\]]*?)\]\]/g)
+      {
+         $linkmap_ref->{$1} = $1; # map
+      }
+      $conjugations =~ s/[\[\]]//sg; #remove
+
+#      print STDERR "LINK: ".$_."=>".$linkmap_ref->{$_}."\n" foreach (keys%$linkmap_ref);
+
+      my @conjugs = split(/\|/, $conjugations);
+
+      foreach (@conjugs)
+      {
+         AddOneConjugation($_, "שורש", $conjug_hash_ref) ||
+         AddOneConjugation($_, "קל הווה פעול", $conjug_hash_ref) ||
+         AddOneBinyan($_, "קל", $conjug_hash_ref) ||
+         AddOneBinyan($_, "נפעל", $conjug_hash_ref) ||
+         AddOneBinyan($_, "הפעיל", $conjug_hash_ref) ||
+         AddOneBinyan($_, "הופעל", $conjug_hash_ref) ||
+         AddOneBinyan($_, "פיעל", $conjug_hash_ref) ||
+         AddOneBinyan($_, "פועל", $conjug_hash_ref) ||
+         AddOneBinyan($_, "התפעל", $conjug_hash_ref) ||
+         0;
+      }
+
+      my $root_out = $xml_root_out->ownerDocument->createElement('root');
+
+      $root_out->appendTextChild("keyword", $title);
+      $root_out->appendTextChild("root", $conjug_hash_ref->{"שורש"}) if $conjug_hash_ref->{"שורש"};
+
+      AddOneBinyanToXml($root_out, "קל", "kal", $conjug_hash_ref, $linkmap_ref);
+      AddOneBinyanToXml($root_out, "נפעל", "nifal", $conjug_hash_ref, $linkmap_ref);
+      AddOneBinyanToXml($root_out, "הפעיל", "hifil", $conjug_hash_ref, $linkmap_ref);
+      AddOneBinyanToXml($root_out, "הופעל", "hufal", $conjug_hash_ref, $linkmap_ref);
+      AddOneBinyanToXml($root_out, "פיעל", "piel", $conjug_hash_ref, $linkmap_ref);
+      AddOneBinyanToXml($root_out, "פועל", "pual", $conjug_hash_ref, $linkmap_ref);
+      AddOneBinyanToXml($root_out, "התפעל", "hitpael", $conjug_hash_ref, $linkmap_ref);
+      $xml_root_out->appendChild($root_out);
+
+#      print STDERR "CON: ".$_."=>".$conjug_hash_ref->{$_}."\n" foreach (keys%$conjug_hash_ref);
+   }
+
+   return $conjug_hash_ref;
 }
