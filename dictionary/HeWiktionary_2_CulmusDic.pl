@@ -13,6 +13,7 @@
 # 15-Dec-18 | iorsh@users.sourceforge.net | Remove excessive whitespace in ktiv_male form
 # 21-Jul-17 | iorsh@users.sourceforge.net | Grammatical analysis for verbs.
 # 16-Dec-18 | iorsh@users.sourceforge.net | Extract verb conjugations.
+# 17-Dec-18 | iorsh@users.sourceforge.net | Extract binyan from lexical analysis.
 
 use strict;
 use integer;
@@ -26,6 +27,7 @@ sub AddDeclensionsToXml;
 sub AddOneBinyan;
 sub AddOneConjugation;
 sub AddOneConjugationToXml;
+sub GetBinyan;
 sub GetDescription;
 sub GetNituah;
 sub GetDeclensions;
@@ -155,6 +157,7 @@ foreach my $page ($doc->getElementsByTagName('page'))
       $var_out->setAttribute("category", $nituah_hash_ref->{"category"}) if $nituah_hash_ref->{"category"};
       $var_out->setAttribute("gender", $nituah_hash_ref->{"gender"}) if $nituah_hash_ref->{"gender"};
       $var_out->setAttribute("stress", $nituah_hash_ref->{"stress"}) if $nituah_hash_ref->{"stress"};
+      $var_out->setAttribute("binyan", $nituah_hash_ref->{"binyan"}) if $nituah_hash_ref->{"binyan"};
       $var_out->appendTextChild("word", $meaning) if $meaning;
       $var_out->appendTextChild("definiton", $expl) if $expl;
       $var_out->appendTextChild("nituah", $nituah_hash_ref->{"nituah"}) if $nituah_hash_ref->{"nituah"};
@@ -282,6 +285,30 @@ sub GetRoot
    return ($root, $rootvar);
 }
 
+sub GetBinyan
+{
+   my ($nituah) = @_;
+
+   # Remove wiki markup from description.
+   $nituah =~ s/\[\[[^\[\]]*?\|(.*?)\]\]/$1/sg;
+   $nituah =~ s/[\[\]]//sg;
+
+   return if ($nituah !~ /\|\s*בניין=(.*?)[\|\z]/s);
+
+   my $binyan = $1;
+
+   return "kal"     if ($binyan =~ /קל/);
+   return "nifal"   if ($binyan =~ /נפעל/);
+   return "piel"    if ($binyan =~ /פיעל/);
+   return "pual"    if ($binyan =~ /פועל/);
+   return "hifil"   if ($binyan =~ /הפעיל/);
+   return "hufal"   if ($binyan =~ /הופעל/);
+   return "hitpael" if ($binyan =~ /התפעל/);
+
+   #WikiPrint();
+   return;
+}
+
 sub GetKtivMale
 {
    my ($nituah) = @_;
@@ -395,6 +422,7 @@ sub GetNituah
       $nituah_hash_ref->{"nituah"} = $nituah;
 
       $nituah_hash_ref->{"category"} = "verb";
+      $nituah_hash_ref->{"binyan"} = GetBinyan($nituah);
       $nituah_hash_ref->{"ktiv_male"} = GetKtivMale($nituah);
       ($nituah_hash_ref->{"root"}, $nituah_hash_ref->{"rootvar"}) = GetRoot($nituah);
    }
