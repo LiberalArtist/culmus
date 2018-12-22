@@ -10,6 +10,7 @@
 # 09-Jan-11 | iorsh@users.sourceforge.net | Fixed for empty translation
 # 29-Jan-11 | iorsh@users.sourceforge.net | Cleanup, another minor xlat fix
 # 15-Dec-18 | iorsh@users.sourceforge.net | Process only single Hebrew words
+# 22-Dec-18 | iorsh@users.sourceforge.net | Added verbs with conjugations
 
 use strict;
 use integer;
@@ -27,6 +28,27 @@ die "Can't find file \"$file\""
 
 my $parser = XML::LibXML->new();
 my $doc = $parser->parse_file($file);
+my @tenses = ('past', 'present', 'future', 'imperative', 'infinitive');
+my @binyanim = ('kal', 'nifal', 'hifil', 'hufal', 'piel', 'pual', 'hitpael');
+my %verbs;
+
+foreach my $verb ($doc->getElementsByTagName('verb'))
+{
+   my $binyan = $verb->getAttribute('binyan');
+   my @conjugations;
+
+   foreach my $conj ($verb->getElementsByTagName('conjugation'))
+   {
+      my $tense = $conj->getAttribute('tense');
+      my ($tense_index) = grep { $tenses[$_] eq $tense } (0 .. @tenses-1);
+      $conjugations[$tense_index] = $conj->getFirstChild->textContent;
+   }
+
+   # Put binyan beyond the last tense
+   $conjugations[@tenses] = $binyan;
+
+   $verbs{$conjugations[0]} = \@conjugations;
+}
 
 foreach my $variant ($doc->getElementsByTagName('variant'))
 {
@@ -34,7 +56,7 @@ foreach my $variant ($doc->getElementsByTagName('variant'))
    my $attr_vargender = $variant->getAttribute('gender');
    my $attr_stress = $variant->getAttribute('stress');
 
-   if (($attr_category ne "noun") and ($attr_category ne "adjective"))
+   if (($attr_category ne "noun") and ($attr_category ne "adjective") and ($attr_category ne "verb"))
    {
       next;
    }
@@ -48,6 +70,23 @@ foreach my $variant ($doc->getElementsByTagName('variant'))
    next if ($ktiv_male !~ /^[א-ת\'\"\x{05F3}\x{05F4}]+$/);
 
    my $definition = GetChildText($variant, 'definiton');
+
+   # Process verbs
+   if ($attr_category eq "verb")
+   {
+      if ($verbs{$word})
+      {
+         my @conjugs = @{$verbs{$word}};
+         my $binyan = $conjugs[@tenses];
+         my ($binyan_index) = grep { $binyanim[$_] eq $binyan } (0 .. @binyanim-1);
+
+         print $ktiv_male .
+            "|" . "v" . $binyan_index. "-" .
+            "|" . $definition .
+            "|" . $conjugs[0] . "|" . $conjugs[1] . "|" . $conjugs[2] . "|" . $conjugs[3] . "|" . $conjugs[4] . "\n";
+      }
+      next;
+   }
 
    # Fetch declensions
    my @declensions = ($word); # 0-base, 1-pl, 2-sc, 3-plsc, 4-fem, 5-fempl, 6-femsc, 7-femplsc
