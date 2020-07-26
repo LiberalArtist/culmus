@@ -1,0 +1,8 @@
+.debhelper/
+culmus.debhelper.log
+culmus.postinst.debhelper
+culmus.postrm.debhelper
+culmus.substvars
+culmus/
+debhelper-build-stamp
+files
