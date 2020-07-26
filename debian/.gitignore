@@ -1,8 +1,8 @@
 .debhelper/
-culmus.debhelper.log
-culmus.postinst.debhelper
-culmus.postrm.debhelper
-culmus.substvars
-culmus/
+fonts-culmus.debhelper.log
+fonts-culmus.postinst.debhelper
+fonts-culmus.postrm.debhelper
+fonts-culmus.substvars
+fonts-culmus/
 debhelper-build-stamp
 files
