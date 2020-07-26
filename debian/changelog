@@ -96,7 +96,7 @@ culmus (0.101-9) unstable; urgency=low
 
 culmus (0.101-8) unstable; urgency=low
 
-  * Create symlink /etc/fonts/conf.d/65-culmus.conf during build, instead of 
+  * Create symlink /etc/fonts/conf.d/65-culmus.conf during build, instead of
     during installation on the client machine. (Closes: #431681)
 
  -- Lior Kaplan <kaplan@debian.org>  Sat, 07 Jul 2007 18:26:52 +0300
@@ -127,7 +127,7 @@ culmus (0.101-5) unstable; urgency=low
 
 culmus (0.101-4) unstable; urgency=low
 
-  * Remove Ktav Yad font from the description since it's not provided by this 
+  * Remove Ktav Yad font from the description since it's not provided by this
     package. See culmus-fancy package if you need it. (Closes: #335247).
 
  -- Lior Kaplan <webmaster@guides.co.il>  Thu, 24 Nov 2005 23:49:19 +0200
@@ -239,4 +239,3 @@ culmus (0.7-1) unstable; urgency=low
   * Only support X for now.
 
  -- Baruch Even <baruch@debian.org>  Wed,  9 Oct 2002 17:10:24 +0200
-
