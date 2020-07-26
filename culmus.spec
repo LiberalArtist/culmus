@@ -1,6 +1,6 @@
 Summary:	Free Hebrew scalable fonts
 Name:		culmus-fonts
-Version:	0.132
+Version:	0.133
 Release:	1
 Vendor:		Culmus Project
 
@@ -38,7 +38,15 @@ BuildArch:	noarch
 # Prereq:		chkfontpath
 
 %description
-David CLM now also supports meteg and rafe, in addition to other diacritics.
+New and updated symbols in Caladings.
+
+Changes:
+ 1. Improved Hamsa shape in Caladings - contributed by Aharon Varady.
+ 2. New Synagogue glyph inspired by the Grand Choral Synagogue of
+    St. Petersburg.
+ 3. Flag of Israel, moon phases and minor fixes.
+ 4. Fixed varika in David CLM - an issue detected by Hebrew Font Visualizer
+    (https://opensiddur.org/help/fonts, again, courtesy of Aharon Varady).
 
 15 Hebrew font families. Contain ASCII glyphs from various sources.
 Those families provide a basic set of a serif (Frank Ruehl), sans serif
