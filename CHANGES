@@ -1,5 +1,19 @@
 Culmus Hebrew fonts
-==============
+===================
+
+27-Sep-2018: version 0.133
+-------------------------
+New and updated symbols in Caladings.
+
+Changes:
+ 1. Improved Hamsa shape in Caladings - contributed by Aharon Varady.
+ 2. New Synagogue glyph inspired by the Grand Choral Synagogue of
+    St. Petersburg.
+ 3. Flag of Israel, moon phases and minor fixes.
+ 4. Fixed varika in David CLM - an issue detected by Hebrew Font Visualizer
+    (https://opensiddur.org/help/fonts, again, courtesy of Aharon Varady).
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 19-Jan-2018: version 0.132
 -------------------------
