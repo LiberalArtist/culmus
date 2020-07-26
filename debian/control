@@ -12,6 +12,7 @@ Homepage: http://culmus.sourceforge.net/
 Package: fonts-culmus
 Provides: culmus
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 Description: TrueType and Type1 Hebrew Fonts for X11
  14 Hebrew font families. Contain ASCII glyphs from various sources.
