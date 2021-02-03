@@ -1,8 +1,18 @@
-culmus (0.133-1) UNRELEASED; urgency=medium
+culmus (0.133-1) unstable; urgency=medium
 
+  [ Tzafrir Cohen ]
   * New upstream release
+  * compat level 13 (Closes: #965471)
+  * debian/copyright: DEP-5 format
+  * Multi-Arch: foreign
+  * Rules-Requires-Root: no
+  * debian/watch: version 4
+  * Standards version 4.5.1
 
- -- Tzafrir Cohen <tzafrir@debian.org>  Sun, 26 Jul 2020 22:18:50 +0300
+  [ Lior Kaplan ]
+  * Update uploaders list
+
+ -- Tzafrir Cohen <tzafrir@debian.org>  Wed, 03 Feb 2021 08:04:08 +0200
 
 culmus (0.132-1) unstable; urgency=medium
 
