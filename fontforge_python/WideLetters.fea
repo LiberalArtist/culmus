@@ -1,0 +1,18 @@
+lookup jaltWideLetters {
+  lookupflag RightToLeft;
+    sub \afii57664 by \uniFB21 ;
+    sub \afii57667 by \uniFB22 ;
+    sub \afii57668 by \uniFB23 ;
+    sub \afii57675 by \uniFB24 ;
+    sub \afii57676 by \uniFB25 ;
+    sub \afii57677 by \uniFB26 ;
+    sub \afii57688 by \uniFB27 ;
+    sub \afii57690 by \uniFB28 ;
+} jaltWideLetters;
+
+feature jalt {
+  script hebr;
+    language dflt ;
+      lookup jaltWideLetters;
+} jalt;
+

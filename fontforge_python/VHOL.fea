@@ -1,0 +1,12 @@
+
+lookup ccmpVavHolam {
+  lookupflag RightToLeft;
+    sub [\afii57793 \afii57794 \afii57795 \afii57796 \afii57797 \afii57798 \afii57799 \afii57800 \afii57801 \afii57802 \uni05C7 \afii57806 ] [\afii57669 ]' [\afii57806 ]'  by \uniE801;
+} ccmpVavHolam;
+
+feature ccmp {
+  script hebr;
+     language dflt ;
+      lookup ccmpVavHolam;
+
+} ccmp;

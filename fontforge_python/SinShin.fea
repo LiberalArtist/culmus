@@ -1,0 +1,21 @@
+
+lookup ccmpSinShin {
+  lookupflag RightToLeft;
+    sub \afii57689 \afii57804  by \afii57694;
+    sub \afii57689 \afii57803  by \afii57695;
+    sub \uniFB49 \afii57804  by \uniFB2C;
+    sub \uniFB2A \afii57807  by \uniFB2C;
+    sub \afii57689 \afii57804 \afii57807  by \uniFB2C;
+    sub \afii57689 \afii57807 \afii57804  by \uniFB2C;
+    sub \uniFB49 \afii57803  by \uniFB2D;
+    sub \uniFB2B \afii57807  by \uniFB2D;
+    sub \afii57689 \afii57803 \afii57807  by \uniFB2D;
+    sub \afii57689 \afii57807 \afii57803  by \uniFB2D;
+} ccmpSinShin;
+
+feature ccmp {
+  script hebr;
+     language dflt ;
+      lookup ccmpSinShin;
+
+} ccmp;
